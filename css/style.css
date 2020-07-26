@@ -1,0 +1,113 @@
+
+* {
+	text-decoration: none;
+	margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: grey;
+    color: white;
+}
+
+html
+{
+    min-height: 100%;
+    position: relative;
+}
+li
+{
+    list-style: none;
+}
+.logo h2 span
+{
+    color: #FB0;
+    display: inline;
+}
+a
+{
+    color: white;
+}
+a:hover
+{
+    color: #FB0;
+	text-decoration: none;
+    transition: .5s;
+}
+.logo span img
+{
+    width: 32px;
+    height: 32px;
+}
+.logo span a:hover
+{
+    zoom: 150%;
+}
+
+@media all and (min-width: 720px)
+{
+    /********* Header **********/
+    .menuFlags
+    {
+        width: 100%;
+    }
+    header div ul, header nav ul, .menuFlags, .logo, .logo span
+    {
+        display: flex;
+        text-align: center;
+        align-items: center;
+    }
+    .mainMenu, .mainMenu li, .langFlags li
+    {
+        margin: 0 auto;
+    }
+    .mainMenu li, .langFlags li
+    {
+        padding: 1.5em 0;
+    }
+    .mainMenu, .logo h2
+    {
+        width: 75%;
+        margin: 0;
+        margin-left: auto;
+    }
+
+    .langFlags
+    {
+        width: 10%;
+        margin: 0 auto 1rem auto;
+    }
+    .logo
+    {
+        margin: 15px 0;
+    }
+    .logo h2
+    {
+        width: 60%;
+    }
+    .logo span
+    {
+        margin: auto;
+        margin-left: 0;
+        width: 20%;
+    }
+    .logo span a
+    {
+        margin: auto;
+    }
+}
+@media all and (min-width: 1280px)
+{
+    /********* Header **********/
+    
+    .mainMenu
+    {
+        width: 80%;
+    }
+    .logo h2
+    {
+        width: 70%;
+    }
+    .logo span 
+    {
+        width: 15%;
+    }
+}
