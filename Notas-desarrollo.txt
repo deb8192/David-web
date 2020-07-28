@@ -1,0 +1,3 @@
+-Cambiar imágenes de distintos tamaños con JavaScript y evitar código redundante en HTML (sección main de index.html)
+-Comprobar si se puede cambiar el color de los textos del header de manera dinámica.
+-Crear distintas páginas en función del idioma.
