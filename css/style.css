@@ -12,6 +12,11 @@ html
     min-height: 100%;
     position: relative;
 }
+header
+{
+    position: fixed;
+    width: 100%;
+}
 li
 {
     list-style: none;
@@ -73,6 +78,14 @@ a:hover
     max-width: 100%;
 }
 
+.med
+{
+    display: block;
+}
+.big
+{
+    display: none;
+}
 @media all and (min-width: 720px)
 {
     /********* Header **********/
@@ -150,14 +163,6 @@ a:hover
     .logo span 
     {
         width: 15%;
-    }
-    .med
-    {
-        display: block;
-    }
-    .big
-    {
-        display: none;
     }
 }
 @media all and (min-width: 1440px)
