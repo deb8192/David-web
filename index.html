@@ -7,18 +7,18 @@
         <link rel = "stylesheet" href="css/bootstrap/bootstrap-grid.css">
         <link rel = "stylesheet" href="css/bootstrap/bootstrap-reboot.css">
         <link rel = "stylesheet" href="css/style.css">
-        <script src="js/code.js"></script>
+        <script src="js/script.js"></script>
         <script src="js/bootstrap-js/bootstrap.bundle.js"></script>
         <script src="js/bootstrap-js/bootstrap.js"></script>
         <title>Index</title>
         <meta name="description" content="David Valls G&oacute;mez p&aacute;gina de inicio">
 
     </head>
-    <body>
+    <body onresize = "checkSocial()">
         <header>
             <div class="logo">
                 <h2>David <span>V</span>alls</h2>
-                <span><a href="#"><img class="bottom-img" src="images/web-icons/social-media/instagram-grey.svg" alt="instagram" height="64px" width="64px">
+                <span class="socialMedia"><a href="#"><img class="bottom-img" src="images/web-icons/social-media/instagram-grey.svg" alt="instagram" height="64px" width="64px">
                         <img class="top-img" src="images/web-icons/social-media/instagram.svg" alt="instagram" height="64px" width="64px">
                     </a>
                     <a href="#"><img class="bottom-img" src="images/web-icons/social-media/vimeo-grey.svg" alt="instagram" height="64px" width="64px">
@@ -29,29 +29,43 @@
                     </a>
                     <a href="#"><img class="bottom-img" src="images/web-icons/social-media/youtube-grey.svg" alt="instagram" height="64px" width="64px">
                         <img class="top-img" src="images/web-icons/social-media/youtube.svg" alt="instagram" height="64px" width="64px">
-                    </a></span>
+                    </a>
+                </span>
             </div>
             <div class="menuFlags">
                 <nav class="mainMenu">
-                    <ul>
-                        <li><a href="#">Curriculum</li></a>
-                        <li><a href="#">Fotos</li></a>
-                        <li><a href="#">Videobook</li></a>
-                        <li><a href="#">Noticias</li></a>
-                        <li><a href="#">Sobre m&iacute;</li></a>
-                        <li><a href="#">Contacto</li></a>         
+                    <label for="mLateral">X</label>
+                    <input type="checkbox" class="checkMenu" name="mLateral" id="mLateral" onclick="showSocial(this)"/>
+                    <ul class="options">
+                        <li class="mainNav">
+                            <ul class="mainOptions">
+                                <li><a href="#">Curriculum</li></a>
+                                <li><a href="#">Fotos</li></a>
+                                <li><a href="#">Videobook</li></a>
+                                <li><a href="#">Noticias</li></a>
+                                <li><a href="#">Sobre m&iacute;</li></a>
+                                <li><a href="#">Contacto</li></a>
+                            </ul> 
+                        </li>
+                        <li class="flagNav">
+                            <ul class="langFlags"> 
+                                <li><a href="#"><img src="images/web-icons/flags/spain.png" alt="instagram" width="24px"></a></li>
+                                <li><a href="#"><img src="images/web-icons/flags/united-kingdom.png" alt="instagram" width="24px"></a></li>
+                                <li><a href="#"><img src="images/web-icons/flags/catalonia.png" alt="instagram" width="24px"></a></li>
+                            </ul>
+                        </li>        
                     </ul>
                 </nav>
-                <ul class="langFlags">
-                    <li><a href="#"><img src="images/web-icons/flags/spain.png" alt="instagram" width="24px"></a></li>
-                    <li><a href="#"><img src="images/web-icons/flags/united-kingdom.png" alt="instagram" width="24px"></a></li>
-                    <li><a href="#"><img src="images/web-icons/flags/catalonia.png" alt="instagram" width="24px"></a></li>
-                </ul>
             </div>
         </header>
         <main id="mainSlider">
             <img class="med" src="images/pictures/MainSlide-med.jpg" alt="foto-principal">
             <img class="big" src="images/pictures/MainSlide.jpg" alt="foto-principal">
         </main>
+        <footer>
+            <span>Web designed by Deb-92</span>
+        </footer>
+        <script>
+        </script>
     </body>
 </html>

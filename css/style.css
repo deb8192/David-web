@@ -1,3 +1,4 @@
+/******************  General features  ******************/
 
 * {
 	text-decoration: none;
@@ -6,7 +7,6 @@
     box-sizing: border-box;
     color: black;
 }
-
 html
 {
     min-height: 100%;
@@ -21,11 +21,7 @@ li
 {
     list-style: none;
 }
-.logo h2 span
-{
-    color: #FB0;
-    display: inline;
-}
+
 a
 {
     color: black;
@@ -39,6 +35,17 @@ a:hover
     color: #FB0;
     text-decoration: none;
 }
+
+/******************  Header  ******************/
+.logo
+{
+    z-index: 1;
+}
+.logo h2 span
+{
+    color: #FB0;
+    display: inline;
+}
 .logo span img
 {
     width: 32px;
@@ -48,11 +55,11 @@ a:hover
     transform: translate(-16px, -16px);
 }
 .logo h2
-    {
-        width: 50%;
-        margin: 0;
-        margin-left: 25%;
-    }
+{
+    width: 50%;
+    margin: 0;
+    margin-left: 25%;
+}
 .logo span a:hover, .langFlags a img:hover
 {
     transform: scale(1.5);
@@ -86,59 +93,163 @@ a:hover
 {
     display: none;
 }
+/************ Lateral menu *************/
+.mainMenu
+{
+    width: 100%;
+    position: relative;
+    top: -100px;
+}
+#mLateral
+{
+    display: none;
+}
+.mainMenu label, #mLateral
+{
+    top: 50px;
+    position:relative;
+    z-index: 1;
+}
+.options
+{
+    height: 35px;
+    position: relative;
+    transition: left .5s ease-out .2s;
+    left: -105%;
+    text-align: center;
+    height: 100%;
+    background-color: #fff;
+    padding-top: 25px;
+}
+.socialMedia
+{
+    top: 50px;
+    transition: left .5s ease-out .2s;
+}
+.mainNav
+{
+    margin-top: 100px;
+}
+#mLateral, #social_lateral, .logo h2
+{
+    z-index: 1;
+}
+#mLateral:checked + .options
+{
+    left: 0;
+}
+.flagNav
+{
+    width: 15%;
+    margin: 0 auto 1rem auto;
+}
+.langFlags
+{
+    display: flex;
+}
+.mainOptions, .mainOptions li, .langFlags li
+{
+    margin: 0 auto;
+}
+.mainOptions li, .langFlags li
+{
+    padding: 1em 0;
+}
+
+.logo
+{
+    margin: 15px 0;
+}
+.socialMedia
+{
+    margin: auto;
+    margin-left: 0;
+    width: 23%;
+    position: relative;
+    left: -100%;
+    z-index: 1;
+}
+.socialMedia a
+{
+    margin: auto;
+}
+.logo, .socialMedia
+{
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+
+/******************  Footer  *********************/
+footer
+{
+    background-color: #333;
+    text-align: center;
+    color: #fff;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    min-height: 70px;
+}
+footer span
+{
+    color: inherit;
+    margin: auto;
+}
+
 @media all and (min-width: 720px)
 {
-    /********* Header **********/
+    /********* Header and main menu **********/
+    nav>label
+    {
+        display: none;
+    }
+    .options
+    {
+        background-color: unset;
+        padding-top: 0;
+    }
+    
+    .mainNav
+    {
+        margin-top: 0;
+    }
+    .options, .socialMedia
+    {
+        left: 0;
+    }
+    .socialMedia
+    {
+        top: 0;
+    }
     .menuFlags
     {
         width: 100%;
+        background-color: unset;
     }
-    header div ul, header nav ul, .menuFlags, .logo, .logo span
+    header div ul, header nav ul, .menuFlags
     {
         display: flex;
         text-align: center;
         align-items: center;
     }
-    .mainMenu, .mainMenu li, .langFlags li
-    {
-        margin: 0 auto;
-    }
-    .mainMenu li, .langFlags li
-    {
-        padding: 1.5em 0;
-    }
-    .mainMenu
+    .mainNav
     {
         width: 75%;
         margin: 0;
         margin-left: auto;
     }
-
-    .langFlags
+    
+    .mainMenu
     {
-        width: 15%;
-        margin: 0 auto 1rem auto;
-    }
-    .logo
-    {
-        margin: 15px 0;
-    }
-    .logo span
-    {
-        margin: auto;
-        margin-left: 0;
-        width: 23%;
-    }
-    .logo span a
-    {
-        margin: auto;
+        top: 0;
     }
 }
 
 @media all and (min-width: 960px)
 {
-    /********* Header **********/
-    .langFlags
+    /********* Header and main menu **********/
+    .flagNav
     {
         width: 12%;
     }
@@ -150,13 +261,13 @@ a:hover
 
 @media all and (min-width: 1280px)
 {
-    /********* Header **********/
+    /********* Header and main menu **********/
     
-    .langFlags
+    .flagNav
     {
         width: 10%;
     }
-    .mainMenu
+    .mainNav
     {
         width: 80%;
     }
@@ -167,6 +278,7 @@ a:hover
 }
 @media all and (min-width: 1440px)
 {
+    /*************  Main slider  **************/
     .med
     {
         display: none;
