@@ -244,6 +244,10 @@ footer span
     {
         top: 0;
     }
+    .mainOptions li, .langFlags li
+    {
+        padding: .25em 0;
+    }
 }
 
 @media all and (min-width: 960px)
@@ -257,12 +261,15 @@ footer span
     {
         width: 18%;
     }
+    .mainOptions li, .langFlags li
+    {
+        padding: 1em 0;
+    }
 }
 
 @media all and (min-width: 1280px)
 {
     /********* Header and main menu **********/
-    
     .flagNav
     {
         width: 10%;
