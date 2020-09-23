@@ -1,0 +1,8 @@
+html:not([data-scroll='0']) {
+    
+    .headerActive
+    {
+        background-color: #fff;       
+        border-bottom: #000 solid 1px;
+    }
+}

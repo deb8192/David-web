@@ -1,4 +1,11 @@
+@import "style.scss";
+
 /******************  General features  ******************/
+@font-face
+{
+    font-family: made-tommy;
+    src: url(../fonts/made-tommy-reg.otf);
+}
 
 * {
 	text-decoration: none;
@@ -9,13 +16,41 @@
 }
 html
 {
+    font-family: made-tommy;
     min-height: 100%;
     position: relative;
 }
+body
+{
+    background-color:#eee;
+}
 header
 {
+    transition: background-color .2s ease-in-out;
     position: fixed;
     width: 100%;
+}
+.headerActive
+{
+    background-color: #fff;       
+    border-bottom: #666 solid 1px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+}
+h1
+{
+    font-size: 3em;
+    margin: 25px auto;
+    text-align: center;
+    color: #79c
+}
+h2
+{
+    font-size: 2em;
+    color: #79c
+}
+.logo h2
+{
+    color: #000
 }
 li
 {
@@ -26,14 +61,29 @@ a
 {
     color: black;
 }
-a, img
+a, img, button
 {
     transition: .5s;
 }
-a:hover
+a:hover, button:hover
 {
     color: #FB0;
     text-decoration: none;
+}
+
+.logo a:hover
+{
+    color: inherit;
+} 
+
+button
+{
+    display: block;
+    border: none;
+    border-radius: 3px;
+    background: lightsteelblue;
+    padding: 15px;
+    margin: 25px auto;
 }
 
 /******************  Header  ******************/
@@ -58,12 +108,14 @@ a:hover
 {
     width: 50%;
     margin: 0;
-    margin-left: 25%;
+    margin-left: 33%;
 }
 .langFlags button
 {
     border: none;
     background-color: transparent;
+    padding: 0;
+    margin: 0;
 }
 .logo span a:hover, .langFlags button img:hover
 {
@@ -82,7 +134,6 @@ a:hover
 #mainSlider
 {
     top: 0px;
-    position: absolute;
     z-index: -1;
 }
 #mainSlider img
@@ -123,13 +174,9 @@ a:hover
     left: -105%;
     text-align: center;
     height: 100%;
+    border-bottom: #000 solid 1px;
     background-color: #fff;
     padding-top: 25px;
-}
-.socialMedia
-{
-    top: 50px;
-    transition: left .5s ease-out .2s;
 }
 .mainNav
 {
@@ -146,7 +193,7 @@ a:hover
 .flagNav
 {
     width: 15%;
-    margin: 0 auto 1rem auto;
+    margin: 0 auto;
 }
 .langFlags
 {
@@ -169,10 +216,12 @@ a:hover
 {
     margin: auto;
     margin-left: 0;
-    width: 23%;
+    width: 50%;
     position: relative;
     left: -100%;
     z-index: 1;
+    top: 50px;
+    transition: left .5s ease-out .2s;
 }
 .socialMedia a
 {
@@ -183,6 +232,39 @@ a:hover
     display: flex;
     text-align: center;
     align-items: center;
+}
+
+/***************  Main section  ******************/
+
+p
+{
+    margin: 15px auto;
+}
+
+#mainCV, #mainBio
+{
+    padding: 60px 0;
+    margin: 0 10%;
+}
+#mainBio div:nth-child(2n + 0) h2
+{
+    text-align: right;
+}
+#mainBio section div
+{
+    border-bottom: solid 1px #aaa;
+    padding: 25px 5%;
+}
+#mainBio section div:last-child
+{
+    border-bottom: none;
+}
+#mainCV p, #mainBio p
+{   
+    margin: 30px 5%;
+    line-height: 1.75;
+    text-align: justify;
+    color: #111;
 }
 
 /******************  Footer  *********************/
@@ -196,10 +278,10 @@ footer
     width: 100%;
     min-height: 70px;
 }
-footer span
+footer div
 {
     color: inherit;
-    margin: auto;
+    margin: 25px;
 }
 
 @media all and (min-width: 720px)
@@ -213,6 +295,7 @@ footer span
     {
         background-color: unset;
         padding-top: 0;
+        border-bottom: none;
     }
     
     .mainNav
@@ -223,9 +306,14 @@ footer span
     {
         left: 0;
     }
+    .logo h2
+    {
+        width: 35%;
+    }
     .socialMedia
     {
         top: 0;
+        width: 23%;
     }
     .menuFlags
     {
@@ -253,6 +341,14 @@ footer span
     {
         padding: .25em 0;
     }
+
+    /*********  Main section *********/
+  
+    #mainCV, #mainBio
+    {
+        padding: 120px 0;
+        margin: 0 10%;
+    }
 }
 
 @media all and (min-width: 960px)
@@ -261,6 +357,11 @@ footer span
     .flagNav
     {
         width: 12%;
+    }
+    .logo h2
+    {
+        width: 50%;
+        margin-left: 25%;
     }
     .logo span
     {

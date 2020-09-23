@@ -22,7 +22,7 @@ _catalanPages = ["index.html", "curriculum.html", "fotos.html", "videobook.html"
 function showSocial(checkBox)
 {
     var styleLeft = "",
-    checkValPerc = "-36%",
+    checkValPerc = "-33%",
     nonCheckValPerc = "-100%";
     if(checkBox.checked == true)
     {
