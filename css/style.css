@@ -22,7 +22,7 @@ html
 }
 body
 {
-    background-color:#eee;
+    background-color:#f2f2f2;
 }
 header
 {
@@ -41,12 +41,12 @@ h1
     font-size: 3em;
     margin: 25px auto;
     text-align: center;
-    color: #79c
+    color: #49f
 }
 h2
 {
     font-size: 2em;
-    color: #79c
+    color: #49f
 }
 .logo h2
 {
@@ -246,16 +246,24 @@ p
     padding: 60px 0;
     margin: 0 10%;
 }
-#mainBio div:nth-child(2n + 0) h2
+#mainCV .divFlex
+{
+    display: block;
+}
+#mainCV .bloqueInfo
+{
+    width: 100%;
+}
+#mainBio article:nth-child(2n + 0) h2
 {
     text-align: right;
 }
-#mainBio section div
+#mainBio article
 {
     border-bottom: solid 1px #aaa;
     padding: 25px 5%;
 }
-#mainBio section div:last-child
+#mainBio article:last-child
 {
     border-bottom: none;
 }
@@ -370,6 +378,17 @@ footer div
     .mainOptions li, .langFlags li
     {
         padding: 1em 0;
+    }
+
+    /************ Main Content ***********/
+    
+    #mainCV .divFlex
+    {
+        display: flex;
+    }
+    #mainCV .bloqueInfo
+    {
+        width: 48%;
     }
 }
 
