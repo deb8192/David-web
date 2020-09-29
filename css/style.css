@@ -45,7 +45,14 @@ h1
 }
 h2
 {
+    margin: 25px auto;
     font-size: 2em;
+    color: #49f
+}
+h3
+{
+    margin: 20px auto;
+    font-size: 1.5em;
     color: #49f
 }
 .logo h2
@@ -258,10 +265,20 @@ p
 {
     text-align: right;
 }
-#mainBio article
+#mainBio article, #mainCV .bloqueInfo
+{
+    padding-left: 3%;
+    padding-right: 3%;
+}
+
+#mainBio article, #mainCV article
+{
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+#mainBio article, #mainCV article
 {
     border-bottom: solid 1px #aaa;
-    padding: 25px 5%;
 }
 #mainBio article:last-child
 {
@@ -273,6 +290,15 @@ p
     line-height: 1.75;
     text-align: justify;
     color: #111;
+}
+span.spanCvLeft, span.spanCvRight 
+{
+    display: block;
+    text-align: left;
+}
+span.spanCvRight 
+{
+    margin-left: 25px;
 }
 
 /******************  Footer  *********************/
@@ -355,7 +381,16 @@ footer div
     #mainCV, #mainBio
     {
         padding: 120px 0;
-        margin: 0 10%;
+        margin: 0 3%;
+    }   
+    span.spanCvLeft, span.spanCvRight
+    {
+        display: inline-block;
+        margin: 0;
+    }
+    span.spanCvLeft
+    {
+        width: 51%;
     }
 }
 
@@ -390,6 +425,15 @@ footer div
     {
         width: 48%;
     }
+    
+    #mainCV .bloqueInfo:first-child
+    {
+        border-right: solid 1px #aaa;
+    }
+    #mainCV article
+    {
+        border-bottom: none;
+    }
 }
 
 @media all and (min-width: 1280px)
@@ -418,5 +462,8 @@ footer div
     .big
     {
         display: block;
+    }
+    #mainCV, #mainBio {
+        margin: 0 10%;
     }
 }
