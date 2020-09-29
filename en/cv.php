@@ -18,7 +18,7 @@
     <body onresize = "checkSocial()">
         <header>
             <div class="logo">
-                <h2><a href="home.html">David <span>V</span>alls</a></h2>
+                <h2><a href="home.php">David <span>V</span>alls</a></h2>
                 <span class="socialMedia"><a href="#"><img class="bottom-img" src="../images/web-icons/social-media/instagram-grey.svg" alt="instagram" height="64px" width="64px">
                         <img class="top-img" src="../images/web-icons/social-media/instagram.svg" alt="instagram" height="64px" width="64px">
                     </a>
@@ -40,12 +40,12 @@
                     <ul class="options">
                         <li class="mainNav">
                             <ul class="mainOptions">
-                                <li><a href="cv.html">CV</li></a>
-                                <li><a href="pictures.html">Pictures</li></a>
-                                <li><a href="videobook.html">Videobook</li></a>
-                                <li><a href="news.html">News</li></a>
-                                <li><a href="about-me.html">About me</li></a>
-                                <li><a href="contact.html">Contact</li></a>
+                                <li><a href="cv.php">CV</li></a>
+                                <li><a href="pictures.php">Pictures</li></a>
+                                <li><a href="videobook.php">Videobook</li></a>
+                                <li><a href="news.php">News</li></a>
+                                <li><a href="about-me.php">About me</li></a>
+                                <li><a href="contact.php">Contact</li></a>
                             </ul> 
                         </li>
                         <li class="flagNav">
@@ -64,12 +64,14 @@
             <div class="divFlex">
                 <article class="bloqueInfo">
                     <h2>Datos</h2>
-                    <p>Fecha de nacimiento  20/10/1994<br>
-                    Altura  1'78<br>
-                    Color de ojos   &Aacute;mbar<br>
-                    Color de pelo   Moreno oscuro<br>
-                    Tono de piel    Claro medio<br>
-                    Tesitura Vocal  Bar&iacute;tono (Sol - Mi4)</p>
+                    <p>
+                        <span class="spanCvLeft">Fecha de nacimiento</span>  <span class="spanCvRight">20/10/1994</span><br>
+                        <span class="spanCvLeft">Altura</span>  <span class="spanCvRight">1'78</span><br>
+                        <span class="spanCvLeft">Color de ojos</span>    <span class="spanCvRight">&Aacute;mbar</span><br>
+                        <span class="spanCvLeft">Color de pelo</span>   <span class="spanCvRight">Moreno oscuro</span><br>
+                        <span class="spanCvLeft">Tono de piel</span>    <span class="spanCvRight">Claro medio</span><br>
+                        <span class="spanCvLeft">Tesitura Vocal</span>  <span class="spanCvRight">Bar&iacute;tono (Sol - Mi4)</span>
+                    </p>
                 </article>
 
                 <article class="bloqueInfo">
@@ -97,9 +99,9 @@
                             2018 <b>ROBERTO ZUCCO</b> Protabonista    C.Cultural Margarita Bur&oacute;n<br>
                             2019 <b>BRAGAS</b> Protagonista    Microteatro Sala Coolturetas<br>
                         </p>
-                        <h3>Teatro</h3>
-                        <p>2016 <b>JACK EL DESTRIPADOR</b> Secundario  TAE El Campello<br>
-                            2018 <b>LITRONA</b> Protagonista    TAE El Campello<br>
+                        <h3>Audiovisual</h3>
+                        <p>2016 <b>LA VIDA EN EL CAMPO</b> Protagonista  ImagiaVideo<br>
+                            2018 <b>OLVIDO</b> Javier    CES<br>
                         </p>
                     </article>
                 </div>
@@ -116,8 +118,8 @@
                             2015 - 2016 Interpretaci&oacute;n en teatro musical   (Silvia Montesinos)<br>
                             2016 Musical Theatre Workshop   (Regent's University)<br>
                             2016 Still Voice Training Nivel 1 y 2   (Robert Sussuma)<br>
-                            2017 Taller Realidad-Deseo   (La Joven Compa&ntilde;&acute;a)<br>
-                            2017 Entrenamientos de La Joven Compa&ntilde;&acute;a   (Andoni Larrabeiti)<br>
+                            2017 Taller Realidad-Deseo   (La Joven Compa&ntilde;&iacute;a)<br>
+                            2017 Entrenamientos de La Joven Compa&ntilde;&iacute;a   (Andoni Larrabeiti)<br>
                             2019 Preparaci&oacute;n al casting audiovisual    (Juan Le&oacute;n)<br>
                             2019 Trabajo del actor dentro del largometraje   (Natalia Mateo)<br>
                         </p>

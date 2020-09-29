@@ -18,7 +18,7 @@
     <body onresize = "checkSocial()">
         <header>
             <div class="logo">
-                <h2><a href="home.html">David <span>V</span>alls</a></h2>
+                <h2><a href="home.php">David <span>V</span>alls</a></h2>
                 <span class="socialMedia"><a href="#"><img class="bottom-img" src="../images/web-icons/social-media/instagram-grey.svg" alt="instagram" height="64px" width="64px">
                         <img class="top-img" src="../images/web-icons/social-media/instagram.svg" alt="instagram" height="64px" width="64px">
                     </a>
@@ -40,12 +40,12 @@
                     <ul class="options">
                         <li class="mainNav">
                             <ul class="mainOptions">
-                                <li><a href="cv.html">CV</li></a>
-                                <li><a href="pictures.html">Pictures</li></a>
-                                <li><a href="videobook.html">Videobook</li></a>
-                                <li><a href="news.html">News</li></a>
-                                <li><a href="about-me.html">About me</li></a>
-                                <li><a href="contact.html">Contact</li></a>
+                                <li><a href="cv.php">CV</li></a>
+                                <li><a href="pictures.php">Pictures</li></a>
+                                <li><a href="videobook.php">Videobook</li></a>
+                                <li><a href="news.php">News</li></a>
+                                <li><a href="about-me.php">About me</li></a>
+                                <li><a href="contact.php">Contact</li></a>
                             </ul> 
                         </li>
                         <li class="flagNav">
@@ -54,7 +54,7 @@
                                 <li><button name ="en" onclick="changeLink(this)"><img src="../images/web-icons/flags/united-kingdom.png" alt="instagram" width="24px"></button></li>
                                 <li><button name ="cat" onclick="changeLink(this)"><img src="../images/web-icons/flags/catalonia.png" alt="instagram" width="24px"></button></li>
                             </ul>
-                        </li>         
+                        </li>        
                     </ul>
                 </nav>
             </div>

@@ -13,10 +13,10 @@ _spanishSel = 0,
 _englishSel = 1,
 _catalanSel = 2,
 
-//change .html to .php
-_spanishPages = ["index.html", "curriculum.html", "fotos.html", "videobook.html", "noticias.html", "sobre-mi.html", "contacto.html"],
-_englishPages = ["home.html", "cv.html", "pictures.html", "videobook.html", "news.html", "about-me.html", "contact.html"],
-_catalanPages = ["index.html", "curriculum.html", "fotos.html", "videobook.html", "noticies.html", "sobre-mi.html", "contacte.html"];
+//change .php to .php
+_spanishPages = ["index.php", "curriculum.php", "fotos.php", "videobook.php", "noticias.php", "sobre-mi.php", "contacto.php"],
+_englishPages = ["home.php", "cv.php", "pictures.php", "videobook.php", "news.php", "about-me.php", "contact.php"],
+_catalanPages = ["index.php", "curriculum.php", "fotos.php", "videobook.php", "noticies.php", "sobre-mi.php", "contacte.php"];
 
 
 function showSocial(checkBox)

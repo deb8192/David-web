@@ -18,7 +18,7 @@
     <body onresize = "checkSocial()">
         <header>
             <div class="logo">
-                <h2><a href="index.html">David <span>V</span>alls</a></h2>
+                <h2><a href="index.php">David <span>V</span>alls</a></h2>
                 <span class="socialMedia"><a href="#"><img class="bottom-img" src="images/web-icons/social-media/instagram-grey.svg" alt="instagram" height="64px" width="64px">
                         <img class="top-img" src="images/web-icons/social-media/instagram.svg" alt="instagram" height="64px" width="64px">
                     </a>
@@ -40,12 +40,12 @@
                     <ul class="options">
                         <li class="mainNav">
                             <ul class="mainOptions">
-                                <li><a href="curriculum.html">Curriculum</li></a>
-                                <li><a href="fotos.html">Fotos</li></a>
-                                <li><a href="videobook.html">Videobook</li></a>
-                                <li><a href="noticias.html">Noticias</li></a>
-                                <li><a href="sobre-mi.html">Sobre m&iacute;</li></a>
-                                <li><a href="contacto.html">Contacto</li></a>
+                                <li><a href="curriculum.php">Curriculum</li></a>
+                                <li><a href="fotos.php">Fotos</li></a>
+                                <li><a href="videobook.php">Videobook</li></a>
+                                <li><a href="noticias.php">Noticias</li></a>
+                                <li><a href="sobre-mi.php">Sobre m&iacute;</li></a>
+                                <li><a href="contacto.php">Contacto</li></a>
                             </ul> 
                         </li>
                         <li class="flagNav">
@@ -99,9 +99,9 @@
                             2018 <b>ROBERTO ZUCCO</b> Protabonista    C.Cultural Margarita Bur&oacute;n<br>
                             2019 <b>BRAGAS</b> Protagonista    Microteatro Sala Coolturetas<br>
                         </p>
-                        <h3>Teatro</h3>
-                        <p>2016 <b>JACK EL DESTRIPADOR</b> Secundario  TAE El Campello<br>
-                            2018 <b>LITRONA</b> Protagonista    TAE El Campello<br>
+                        <h3>Audiovisual</h3>
+                        <p>2016 <b>LA VIDA EN EL CAMPO</b> Protagonista  ImagiaVideo<br>
+                            2018 <b>OLVIDO</b> Javier    CES<br>
                         </p>
                     </article>
                 </div>
