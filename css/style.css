@@ -68,7 +68,7 @@ a
 {
     color: black;
 }
-a, img, button
+a, img, button, .pictureGrid article
 {
     transition: .5s;
 }
@@ -124,9 +124,9 @@ button
     padding: 0;
     margin: 0;
 }
-.logo span a:hover, .langFlags button img:hover
+.logo span a:hover, .langFlags button img:hover, .pictureGrid article:hover
 {
-    transform: scale(1.5);
+    transform: scale(1.3);
     z-index: 1;
 }
 .top-img
@@ -248,7 +248,7 @@ p
     margin: 15px auto;
 }
 
-#mainCV, #mainBio
+#mainCV, #mainBio, #mainPic
 {
     padding: 60px 0;
     margin: 0 10%;
@@ -265,10 +265,10 @@ p
 {
     text-align: right;
 }
-#mainBio article, #mainCV .bloqueInfo
+#mainBio article, #mainCV .bloqueInfo, #mainPic article
 {
-    padding-left: 3%;
-    padding-right: 3%;
+    padding-left: 5%;
+    padding-right: 5%;
 }
 
 #mainBio article, #mainCV article
@@ -378,11 +378,18 @@ footer div
 
     /*********  Main section *********/
   
-    #mainCV, #mainBio
+    #mainCV, #mainBio, #mainPic
     {
         padding: 120px 0;
+    }
+    #mainCV, #mainBio
+    {
         margin: 0 3%;
-    }   
+    }  
+    #mainPic
+    {
+        margin: 0 10%; 
+    }  
     span.spanCvLeft, span.spanCvRight
     {
         display: inline-block;
@@ -391,6 +398,18 @@ footer div
     span.spanCvLeft
     {
         width: 51%;
+    }
+    .pictureGrid
+    {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(14em, 1fr));
+        grid-gap: 30px 30px;
+        padding: 0 10%;
+    }
+    .pictureGrid img
+    {
+        display: block;
+        margin: 0 auto;
     }
 }
 

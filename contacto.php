@@ -60,8 +60,8 @@
             </div>
         </header>
         <main id="mainSlider">
-            <img class="med" src="images/pictures/MainSlide-med.jpg" alt="foto-principal">
-            <img class="big" src="images/pictures/MainSlide.jpg" alt="foto-principal">
+            <img class="med" src="images/pictures/fotos/MainSlide-med.jpg" alt="foto-principal">
+            <img class="big" src="images/pictures/fotos/MainSlide.jpg" alt="foto-principal">
         </main>
         <footer>
             <div>Web designed by Deb-92</div>

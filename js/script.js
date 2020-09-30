@@ -18,7 +18,7 @@ _spanishPages = ["index.php", "curriculum.php", "fotos.php", "videobook.php", "n
 _englishPages = ["home.php", "cv.php", "pictures.php", "videobook.php", "news.php", "about-me.php", "contact.php"],
 _catalanPages = ["index.php", "curriculum.php", "fotos.php", "videobook.php", "noticies.php", "sobre-mi.php", "contacte.php"];
 
-
+//MAYBE IT WILL DISSAPEAR
 function showSocial(checkBox)
 {
     var styleLeft = "",
@@ -46,6 +46,19 @@ function checkSocial()
     else
     {
         showSocial(document.querySelector('.checkMenu'));
+    }
+}
+//!MAYBE IT WILL DISSAPEAR
+
+//Fotos loader function (provisional)
+function loadPictures()
+{
+    for(let i = 0; i < 12; i++)
+    {
+        let html = '<img class="picture" src=" images/pictures/fotos/thumbnail/img-thumb-prov-1.jpg" alt="img-thumb-prov-1-${i}">';
+        let article = document.createElement("article");
+        article.innerHTML = html;
+        document.querySelector(".pictureGrid").appendChild(article);
     }
 }
 

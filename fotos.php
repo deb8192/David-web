@@ -59,14 +59,17 @@
                 </nav>
             </div>
         </header>
-        <main id="mainSlider">
-            <img class="med" src="images/pictures/MainSlide-med.jpg" alt="foto-principal">
-            <img class="big" src="images/pictures/MainSlide.jpg" alt="foto-principal">
+        <main id="mainPic">
+        <h1>FOTOS</h1>
+            <div class="pictureGrid">
+                
+            </div>
         </main>
         <footer>
             <div>Web designed by Deb-92</div>
         </footer>
         <script>
+            loadPictures();
         </script>
     </body>
 </html>
