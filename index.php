@@ -1,7 +1,7 @@
 <?php
     // Page title, keywords & description
     $title = 'David Valls';
-    $keywords = 'pictures, images, imagen, imágenes, fotos, foto';
+    $keywords = 'index, david, valls, david valls, actor, home, artist, artista, cinema, theatre, musical, cine, teatro';
     $description = 'Página principal de una galería de fotos on-line.';
     
      // DOCTYPE declaration, <html>, <head>, <title>, <meta> y <link>. 
