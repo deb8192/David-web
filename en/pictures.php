@@ -1,20 +1,12 @@
-<!DOCTYPE html>
-<html lang="es">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width = device-width, initial-scale = 1.0">
-        <link rel = "stylesheet" href="../css/bootstrap/bootstrap.css">
-        <link rel = "stylesheet" href="../css/bootstrap/bootstrap-grid.css">
-        <link rel = "stylesheet" href="../css/bootstrap/bootstrap-reboot.css">
-        <link rel = "stylesheet" href="../css/style.css?v=2">
-        <script src="../js/script.js"></script>
-        <script src="../lib/js/jquery/jquery-3.5.1.slim.min.js"></script>        
-        <script src="../js/bootstrap-js/bootstrap.bundle.js"></script>
-        <script src="../js/bootstrap-js/bootstrap.js"></script>
-        <title>Index</title>
-        <meta name="description" content="David Valls G&oacute;mez index page">
-
-    </head>
+<?php
+    // Page title, keywords & description
+    $title = "Pictures";
+    $keywords = "pictures, david, valls, david valls, actor, pic, imagenes, images, picture, photography, photos, photo";
+    $description = "David Valls pictures page";
+    
+     // DOCTYPE declaration, <html>, <head>, <title>, <meta> y <link>. 
+    include_once("../includes/head.php");
+?>
     <body onresize = "checkSocial()">
         <header>
             <div class="logo">
@@ -59,14 +51,18 @@
                 </nav>
             </div>
         </header>
-        <main id="mainSlider">
-            <img class="med" src="../images/pictures/fotos/MainSlide-med.jpg" alt="foto-principal">
-            <img class="big" src="../images/pictures/fotos/MainSlide.jpg" alt="foto-principal">
+        <main id="mainPic">
+        <h1>FOTOS</h1>
+            <div class="pictureGrid">
+                
+            </div>
         </main>
-        <footer>
-            <div>Web designed by Deb-92</div>
-        </footer>
+        <?php
+            //Footer declaration
+            include_once("../includes/footer.php");
+        ?>
         <script>
+            loadPictures();
         </script>
     </body>
 </html>
