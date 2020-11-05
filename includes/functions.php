@@ -24,12 +24,12 @@
             echo 
             '<li class="mainNav">
                 <ul class="mainOptions">
-                    <li><a href="cv.php">CV</li></a>
-                    <li><a href="pictures.php">Pictures</li></a>
+                    <li><a href="curriculum.php">Curriculum</li></a>
+                    <li><a href="fotos.php">Fotos</li></a>
                     <li><a href="videobook.php">Videobook</li></a>
-                    <li><a href="news.php">News</li></a>
-                    <li><a href="about-me.php">About me</li></a>
-                    <li><a href="contact.php">Contact</li></a>
+                    <li><a href="noticies.php">Noticies</li></a>
+                    <li><a href="sobre-mi.php">Sobre mi</li></a>
+                    <li><a href="contacte.php">Contacte</li></a>
                 </ul> 
             </li>';
         }
