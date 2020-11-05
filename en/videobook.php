@@ -1,8 +1,8 @@
 <?php
     // Page title, keywords & description
-    $title = "David Valls";
-    $keywords = "videobook, david, valls, david valls, actor, video, visual, curriculum, career";
-    $description = "David Valls homepage";
+    $title = "Videobook";
+    $keywords = "videobook, david, valls, david valls, actor, experience, video, visual, career, curriculum";
+    $description = "David Valls' videobook page";
     
      // DOCTYPE declaration, <html>, <head>, <title>, <meta> y <link>. 
     include_once("../includes/head.php");

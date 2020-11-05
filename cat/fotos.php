@@ -1,8 +1,8 @@
 <?php
     // Page title, keywords & description
-    $title = "Contact";
-    $keywords = "contact, david, valls, david valls, actor, data, email, e-mail, telephone";
-    $description = "David Valls' contact page";
+    $title = "Fotos";
+    $keywords = "fotos, david, valls, david valls, actor, pic, images, image, fotografia, fotografies, foto";
+    $description = "P&agrave;gina de fotos de David Valls";
     
      // DOCTYPE declaration, <html>, <head>, <title>, <meta> y <link>. 
     include_once("../includes/head.php");
@@ -11,15 +11,18 @@
         <?php 
             include_once("../includes/header.php");
         ?>
-        <main id="mainSlider">
-            <img class="med" src="../images/pictures/fotos/MainSlide-med.jpg" alt="foto-principal">
-            <img class="big" src="../images/pictures/fotos/MainSlide.jpg" alt="foto-principal">
+        <main id="mainPic">
+        <h1>FOTOS</h1>
+            <div class="pictureGrid">
+                
+            </div>
         </main>
         <?php
             //Footer declaration
             include_once("../includes/footer.php");
         ?>
         <script>
+            loadPictures(<?php echo Constant::_TRUE ?>);
         </script>
     </body>
 </html>

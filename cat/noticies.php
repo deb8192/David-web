@@ -1,8 +1,8 @@
 <?php
     // Page title, keywords & description
-    $title = "Contact";
-    $keywords = "contact, david, valls, david valls, actor, data, email, e-mail, telephone";
-    $description = "David Valls' contact page";
+    $title = "Noticies";
+    $keywords = "noticies, david, valls, david valls, actor, noticia, informacio, novetats, novetat, ultima informacio, ultimes noticies, informacio recent";
+    $description = "David Valls news page";
     
      // DOCTYPE declaration, <html>, <head>, <title>, <meta> y <link>. 
     include_once("../includes/head.php");

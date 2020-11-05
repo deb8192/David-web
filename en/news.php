@@ -2,7 +2,7 @@
     // Page title, keywords & description
     $title = "News";
     $keywords = "news, david, valls, david valls, actor, new, information, latest info,";
-    $description = "David Valls news page";
+    $description = "David Valls' news page";
     
      // DOCTYPE declaration, <html>, <head>, <title>, <meta> y <link>. 
     include_once("../includes/head.php");

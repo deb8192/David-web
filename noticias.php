@@ -1,7 +1,7 @@
 <?php
     // Page title, keywords & description
     $title = "Noticias";
-    $keywords = "noticias, david, valls, david valls, actor, noticia, informacion, novedades, novedad, ultima informacion";
+    $keywords = "noticias, david, valls, david valls, actor, noticia, informacion, novedades, novedad, ultima informacion, ultimas noticias, informacion reciente";
     $description = "P&aacute;gina de noticias de David Valls";
     
      // DOCTYPE declaration, <html>, <head>, <title>, <meta> y <link>. 

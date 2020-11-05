@@ -2,7 +2,7 @@
     // Page title, keywords & description
     $title = "Curriculum";
     $keywords = "curriculum, david, valls, david valls, actor, cv, curriculum vitae, vitae, experience, education, academic training";
-    $description = "David Valls CV page";
+    $description = "David Valls' CV page";
     
      // DOCTYPE declaration, <html>, <head>, <title>, <meta> y <link>. 
     include_once("../includes/head.php");
