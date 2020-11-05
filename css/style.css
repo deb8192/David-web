@@ -300,6 +300,18 @@ span.spanCvRight
 {
     margin-left: 25px;
 }
+.pictureGrid
+{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(14em, 1fr));
+        grid-gap: 30px 30px;
+        padding: 0 10%;
+}
+.pictureGrid img
+{
+    display: block;
+    margin: 0 auto;
+}
 
 /******************  Footer  *********************/
 footer
@@ -316,6 +328,13 @@ footer div
 {
     color: inherit;
     margin: 25px;
+}
+@media all and (min-width: 640px)
+{
+    .pictureGrid img
+    {
+        width: 400px;
+    }
 }
 
 @media all and (min-width: 720px)
@@ -401,15 +420,13 @@ footer div
     }
     .pictureGrid
     {
-        display: grid;
         grid-template-columns: repeat(auto-fill, minmax(14em, 1fr));
         grid-gap: 30px 30px;
         padding: 0 10%;
     }
-    .pictureGrid img
+    .pictureGrid img 
     {
-        display: block;
-        margin: 0 auto;
+        width: 100%;
     }
 }
 

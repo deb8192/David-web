@@ -1,6 +1,7 @@
 <?php
     //session_start();
     include_once('global-constants.php');   //constants for PHP code
+    include_once('functions.php');
 
     $url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
     $lang = ['es', 'en', 'cat'];
@@ -35,9 +36,8 @@
             <link rel = "stylesheet" href="../css/bootstrap/bootstrap-grid.css">
             <link rel = "stylesheet" href="../css/bootstrap/bootstrap-reboot.css">
             <link rel = "stylesheet" href="../css/style.css?v=2">
-            <script src="../js/script.js"></script>
             <script src="../lib/js/jquery/jquery-3.5.1.slim.min.js"></script>
-            <script src="../js/jqueryScript.js"></script>
+            <script src="../js/script.js"></script>
             <script src="../js/bootstrap-js/bootstrap.bundle.js"></script>
             <script src="../js/bootstrap-js/bootstrap.js"></script>  
         </head>
@@ -57,9 +57,8 @@
                 <link rel = "stylesheet" href="css/bootstrap/bootstrap-grid.css">
                 <link rel = "stylesheet" href="css/bootstrap/bootstrap-reboot.css">
                 <link rel = "stylesheet" href="css/style.css?v=2">
-                <script src="js/script.js"></script>
                 <script src="lib/js/jquery/jquery-3.5.1.slim.min.js"></script>
-                <script src="js/jqueryScript.js"></script>
+                <script src="js/script.js"></script>
                 <script src="js/bootstrap-js/bootstrap.bundle.js"></script>
                 <script src="js/bootstrap-js/bootstrap.js"></script>  
             </head>

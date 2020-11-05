@@ -18,21 +18,36 @@ _spanishPages = ["index.php", "curriculum.php", "fotos.php", "videobook.php", "n
 _englishPages = ["home.php", "cv.php", "pictures.php", "videobook.php", "news.php", "about-me.php", "contact.php"],
 _catalanPages = ["index.php", "curriculum.php", "fotos.php", "videobook.php", "noticies.php", "sobre-mi.php", "contacte.php"];
 
+//Direct JQuery
+$(window).scroll(function() {
+    if($(window).scrollTop() > 0) {
+        $("header").addClass("headerActive");
+    } else {
+        //remove the background property so it comes transparent again (defined in your css)
+       $("header").removeClass("headerActive");
+    }
+});
+
 //MAYBE IT WILL DISSAPEAR
 function showSocial(checkBox)
 {
     var styleLeft = "",
     checkValPerc = "-33%",
     nonCheckValPerc = "-100%";
+    height = "10px";
+    inheritHeight = "inherit";
     if(checkBox.checked == true)
     {
         styleLeft = checkValPerc;
+        height = inheritHeight;
     }
     else
     {
         styleLeft = nonCheckValPerc;
     }
-    document.querySelector('.socialMedia').style.left = styleLeft;
+    $('.socialMedia').css({left: styleLeft});
+    $('.menuFlags').css({height: height});
+    $('.mainMenu').css({height: height});
 }
 
 function checkSocial()
@@ -51,11 +66,16 @@ function checkSocial()
 //!MAYBE IT WILL DISSAPEAR
 
 //Fotos loader function (provisional)
-function loadPictures()
+function loadPictures(notSpanish)
 {
     for(let i = 0; i < 12; i++)
     {
-        let html = '<img class="picture" src=" images/pictures/fotos/thumbnail/img-thumb-prov-1.jpg" alt="img-thumb-prov-1-${i}">';
+        let html = '<img class="picture" src=" ';
+        if(notSpanish)
+        {
+            html += '../';
+        }
+        html += 'images/pictures/fotos/thumbnail/img-thumb-prov-1.jpg" alt="img-thumb-prov-1-${i}">';
         let article = document.createElement("article");
         article.innerHTML = html;
         document.querySelector(".pictureGrid").appendChild(article);
