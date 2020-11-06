@@ -313,7 +313,23 @@ span.spanCvRight
     margin: 0 auto;
 }
 
-/******************  Footer  *********************/
+/****************** Modal style *******************/
+#background-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0,0,0,.7);
+}
+#background-layer > article {
+    position: absolute;
+    top: 5em;
+    left: 25%;
+    box-shadow: 5px 5px #27323260;
+}
+
+/*******************  Footer  *********************/
 footer
 {
     background-color: #333;
@@ -329,6 +345,8 @@ footer div
     color: inherit;
     margin: 25px;
 }
+
+
 @media all and (min-width: 640px)
 {
     .pictureGrid img

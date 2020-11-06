@@ -19,16 +19,27 @@ _englishPages = ["home.php", "cv.php", "pictures.php", "videobook.php", "news.ph
 _catalanPages = ["index.php", "curriculum.php", "fotos.php", "videobook.php", "noticies.php", "sobre-mi.php", "contacte.php"];
 
 //Direct JQuery
-$(window).scroll(function() {
-    if($(window).scrollTop() > 0) {
-        $("header").addClass("headerActive");
-    } else {
-        //remove the background property so it comes transparent again (defined in your css)
-       $("header").removeClass("headerActive");
-    }
-});
+$(document).ready(function(){
+    $(window).scroll(function() {
+        if($(window).scrollTop() > 0) {
+            $("header").addClass("headerActive");
+        } else {
+            //remove the background property so it comes transparent again (defined in your css)
+           $("header").removeClass("headerActive");
+        }
+    });
+    $(".galeryPic").click(function(){
+        modalPicture($(".galeryPic").find("img").attr("src"));
+    })
+})
+
+
 
 //MAYBE IT WILL DISSAPEAR
+
+/*============================================================================
+                            Functions related with header
+==============================================================================*/
 function showSocial(checkBox)
 {
     var styleLeft = "",
@@ -56,12 +67,37 @@ function checkSocial()
     defaultLeftVal = "0%";
     if(width >= _midWidth)
     {
-        document.querySelector('.socialMedia').style.left = defaultLeftVal;
+        //.socialMedia').style.left = defaultLeftVal;       THIS IS WITH ORIGINAL JAVASCRIPT    NEXT LINE IS WITH JQUERY
+        $(".socialMedia").css({left: defaultLeftVal});
     }
     else
     {
-        showSocial(document.querySelector('.checkMenu'));
+        showSocial($(".checkMenu"));
     }
+}
+
+/*============================================================================
+                            Functions related with modals
+==============================================================================*/
+
+/*TO FINISH: 
+    Centrar modal en CSS
+    Permitir cerrar modal
+    Permitir cambiar de foto
+    ocultar barra de scroll*/
+function createModal(html)
+{
+    let div = $("<div></div>");
+    div.attr('id', 'background-layer');
+    div.html(html);
+    $('body').append(div);
+}
+function modalPicture(imgDir)
+{
+    let html = $("<article></article")
+        .append($("<img></img>")
+            .attr("src", imgDir));
+    createModal(html);
 }
 //!MAYBE IT WILL DISSAPEAR
 
@@ -76,9 +112,10 @@ function loadPictures(notSpanish)
             html += '../';
         }
         html += 'images/pictures/fotos/thumbnail/img-thumb-prov-1.jpg" alt="img-thumb-prov-1-${i}">';
-        let article = document.createElement("article");
+        let article = document.createElement("article")
         article.innerHTML = html;
-        document.querySelector(".pictureGrid").appendChild(article);
+        article.className = "galeryPic";
+        $(".pictureGrid").append(article);
     }
 }
 
