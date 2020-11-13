@@ -22,7 +22,7 @@
             </div>
             <div class="menuFlags">
                 <nav class="mainMenu">
-                    <label for="mLateral">X</label>
+                    <label for="mLateral"><i class = "flaticon-list"></i></label>
                     <input type="checkbox" class="checkMenu" name="mLateral" id="mLateral" onclick="showSocial(this)"/>
                     <ul class="options">
                         <?php
@@ -62,7 +62,7 @@
             </div>
             <div class="menuFlags">
                 <nav class="mainMenu">
-                    <label for="mLateral">X</label>
+                    <label for="mLateral"><i class="flaticon-list"></i></label>
                     <input type="checkbox" class="checkMenu" name="mLateral" id="mLateral" onclick="showSocial(this)"/>
                     <ul class="options">
                     <?php

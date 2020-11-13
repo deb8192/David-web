@@ -84,7 +84,8 @@ function checkSocial()
     Centrar modal en CSS
     Permitir cerrar modal
     Permitir cambiar de foto
-    ocultar barra de scroll*/
+    ocultar barra de scroll
+    evitar que se cree otro modal si ya hay uno*/
 function createModal(html)
 {
     let div = $("<div></div>");

@@ -36,6 +36,7 @@
             <link rel = "stylesheet" href="../css/bootstrap/bootstrap-grid.css">
             <link rel = "stylesheet" href="../css/bootstrap/bootstrap-reboot.css">
             <link rel = "stylesheet" href="../css/style.css?v=2">
+            <link rel = "stylesheet" href="../images/web-icons/flaticons/flaticon.css">
             <script src="../lib/js/jquery/jquery-3.5.1.slim.min.js"></script>
             <script src="../js/script.js"></script>
             <script src="../js/bootstrap-js/bootstrap.bundle.js"></script>
@@ -57,6 +58,7 @@
                 <link rel = "stylesheet" href="css/bootstrap/bootstrap-grid.css">
                 <link rel = "stylesheet" href="css/bootstrap/bootstrap-reboot.css">
                 <link rel = "stylesheet" href="css/style.css?v=2">
+            <link rel = "stylesheet" href="images/web-icons/flaticons/flaticon.css">
                 <script src="lib/js/jquery/jquery-3.5.1.slim.min.js"></script>
                 <script src="js/script.js"></script>
                 <script src="js/bootstrap-js/bootstrap.bundle.js"></script>
