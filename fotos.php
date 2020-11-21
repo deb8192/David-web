@@ -22,7 +22,7 @@
             include_once("includes/footer.php");
         ?>
         <script>
-            loadPictures(<?php echo Constant::_FALSE ?>);
+            loadPictures(<?php echo Constant::FALSE_CONST ?>);
         </script>
     </body>
 </html>
