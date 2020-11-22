@@ -13,7 +13,11 @@
         ?>
         <main id="mainSlider">
             <img class="med" src="images/pictures/fotos/MainSlide-med.jpg" alt="foto-principal">
-            <img class="big" src="images/pictures/fotos/MainSlide.jpg" alt="foto-principal">
+            <img class="big" src="images/pictures/fotos/MainSlide.jpg" alt="foto-principal"> 
+            <?php
+                //findSliderPictures(1);
+            ?>
+
         </main>
         <?php
             //Footer declaration

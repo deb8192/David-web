@@ -13,10 +13,12 @@ _spanishSel = 0,
 _englishSel = 1,
 _catalanSel = 2,
 
-//change .php to .php
 _spanishPages = ["index.php", "curriculum.php", "fotos.php", "videobook.php", "noticias.php", "sobre-mi.php", "contacto.php"],
 _englishPages = ["home.php", "cv.php", "pictures.php", "videobook.php", "news.php", "about-me.php", "contact.php"],
-_catalanPages = ["index.php", "curriculum.php", "fotos.php", "videobook.php", "noticies.php", "sobre-mi.php", "contacte.php"];
+_catalanPages = ["index.php", "curriculum.php", "fotos.php", "videobook.php", "noticies.php", "sobre-mi.php", "contacte.php"],
+
+//Directories
+_serverFunctions = "includes/functions.php";
 
 //Direct JQuery
 $(document).ready(function(){
@@ -100,6 +102,20 @@ function modalPicture(imgDir)
             .attr("src", imgDir));
     createModal(html);
 }
+
+//TO FINISH
+/*function loadSliderPictures(notSpanish)
+{
+    var xmlhttpRequest = new XMLHttpRequest();
+
+    xmlhttpRequest.onreadystatechange = function(){
+
+    }
+
+    xmlhttpRequest.open("POST", _serverFunctions, _true);
+    xmlhttpRequestr.send();
+}*/
+
 //!MAYBE IT WILL DISSAPEAR
 
 //Fotos loader function (provisional)

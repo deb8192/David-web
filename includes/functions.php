@@ -1,5 +1,5 @@
 <?php
-    //require_once('admin/db.inc');     Not necessary at the moment
+    require_once('admin/database.php');     
 
     //PHP functions
 
@@ -46,6 +46,40 @@
                     <li><a href="contacto.php">Contacto</li></a>
                 </ul> 
             </li>';
+        }
+    }
+
+    //Database functions
+    //TO FINISH
+    function findSliderPictures($section)
+    {
+        $db = new Database();
+        $db->connect();
+
+        $query = "SELECT urlPic, title, picDescription, picSizeID WHERE picSectionID = '$section' ";
+        $response = $db->executeQuery($query);
+        if($response->num_rows > Constants::ZERO)
+        {
+            while($row = $response->fetch_object())
+            {
+                $class = $row->picSizeID;
+                $className = "";
+                switch ($class)
+                {
+                    case 1:
+                        $className = "sml";
+                    break;
+                    
+                    case 2:
+                        $className = "med";
+                    break;
+                    
+                    case 3:
+                        $className = "lar";
+                    break;
+                }
+                echo '<img class="', $className ,'" src="' , $row->urlPic , '" alt="' , $row->picDescription , '">';
+            }
         }
     }
 ?>
