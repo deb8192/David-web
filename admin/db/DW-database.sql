@@ -68,7 +68,7 @@ INSERT INTO PicSizes (sizeName)
 
 INSERT INTO Pictures (title, urlPic, picDescription, picDescriptionEng, picDescriptionCat, picSectionID, picSizeID)
     VALUES  ("mainSlide-lar.jpg", "images/pictures/mainSlider/large/mainSlider-lar.jpg", "Foto grande del slider de la página inicial de David Valls Gomez Web", "David Valls Gomez Web homepage's main slider large picture", "Foto gran del slider de la pagina inicial de David Valls Gomez Web", 1, 3),
-            ("mainSlide-med.jpg", "images/pictures/mainSlider/large/mainSlider-med.jpg", "Foto mediana del slider de la página inicial de David Valls Gomez Web", "David Valls Gomez Web homepage's main slider medium picture", "Foto mediana del slider de la pagina inicial de David Valls Gomez Web", 1, 2);
+            ("mainSlide-med.jpg", "images/pictures/mainSlider/mrdium/mainSlider-med.jpg", "Foto mediana del slider de la página inicial de David Valls Gomez Web", "David Valls Gomez Web homepage's main slider medium picture", "Foto mediana del slider de la pagina inicial de David Valls Gomez Web", 1, 2);
 
 INSERT INTO UserPrivileges (privilegeName)
     VALUES  ("Super Admin"),

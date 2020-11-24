@@ -15,29 +15,65 @@ _catalanSel = 2,
 
 _spanishPages = ["index.php", "curriculum.php", "fotos.php", "videobook.php", "noticias.php", "sobre-mi.php", "contacto.php"],
 _englishPages = ["home.php", "cv.php", "pictures.php", "videobook.php", "news.php", "about-me.php", "contact.php"],
-_catalanPages = ["index.php", "curriculum.php", "fotos.php", "videobook.php", "noticies.php", "sobre-mi.php", "contacte.php"],
+_catalanPages = ["home.php", "curriculum.php", "fotos.php", "videobook.php", "noticies.php", "sobre-mi.php", "contacte.php"],
 
 //Directories
 _serverFunctions = "includes/functions.php";
 
 //Direct JQuery
 $(document).ready(function(){
+    var width = ($(window).outerWidth() > 0) ? $(window).outerWidth() : $(document).outerWidth();
+        if(width < _midWidth)
+        {
+            showSocial($(".checkMenu")[_zero]);
+        }
+    /*============================================================================
+                                Scroll functions
+    ==============================================================================*/
     $(window).scroll(function() {
-        if($(window).scrollTop() > 0) {
-            $("header").addClass("headerActive");
-        } else {
-            //remove the background property so it comes transparent again (defined in your css)
-           $("header").removeClass("headerActive");
+        if($(window).scrollTop() > 0)
+        {
+            if($(".checkMenu")[_zero].checked)         
+            {
+                removeClass("header", "headerActive");
+            } 
+            else {
+                addClass("header", "headerActive");
+            }
+        }
+        else
+        {
+            removeClass("header", "headerActive");
         }
     });
+    
+    /*============================================================================
+                                Resize functions
+    ==============================================================================*/
+    $(window).resize(function(){
+        var width = ($(window).outerWidth() > 0) ? $(window).outerWidth() : $(document).outerWidth(),
+        inheritHeight = "inherit",
+        defaultLeftVal = "0%";
+        if(width >= _midWidth)
+        {
+            //.socialMedia').style.left = defaultLeftVal;       THIS IS WITH ORIGINAL JAVASCRIPT    NEXT LINE IS WITH JQUERY
+            $(".socialMedia").css({left: defaultLeftVal});
+            $('.menuFlags').css({height: inheritHeight});
+            $('.mainMenu').css({height: inheritHeight});
+        }
+        else
+        {
+            showSocial($(".checkMenu")[_zero]);
+        }
+    });
+
+    /*============================================================================
+                            Loading modal picture
+    ==============================================================================*/
     $(".galeryPic").click(function(){
         modalPicture($(".galeryPic").find("img").attr("src"));
-    })
+    });
 })
-
-
-
-//MAYBE IT WILL DISSAPEAR
 
 /*============================================================================
                             Functions related with header
@@ -45,37 +81,32 @@ $(document).ready(function(){
 function showSocial(checkBox)
 {
     var styleLeft = "",
-    checkValPerc = "-33%",
-    nonCheckValPerc = "-100%";
-    height = "10px";
-    inheritHeight = "inherit";
+    color = "",
+    borderBottom = "",
+    checkValPerc = "-50%",
+    nonCheckValPerc = "-200%",
+    height = "10px",
+    inherit = "inherit";
     if(checkBox.checked == true)
     {
         styleLeft = checkValPerc;
-        height = inheritHeight;
+        height = inherit;
+        removeClass("header", "headerActive");
     }
     else
     {
         styleLeft = nonCheckValPerc;
+        color = inherit;
+        borderBottom = inherit;
+        if($(window).scrollTop() > 0)
+        {
+            addClass("header", "headerActive");
+        }
     }
-    $('.socialMedia').css({left: styleLeft});
-    $('.menuFlags').css({height: height});
-    $('.mainMenu').css({height: height});
-}
-
-function checkSocial()
-{
-    var width = (window.innerWidth > 0) ? window.innerWidth : screen.width,
-    defaultLeftVal = "0%";
-    if(width >= _midWidth)
-    {
-        //.socialMedia').style.left = defaultLeftVal;       THIS IS WITH ORIGINAL JAVASCRIPT    NEXT LINE IS WITH JQUERY
-        $(".socialMedia").css({left: defaultLeftVal});
-    }
-    else
-    {
-        showSocial($(".checkMenu"));
-    }
+    $('.socialMedia').css({"left": styleLeft});
+    $('.menuFlags').css({"height": height});
+    $('.mainMenu').css({"height": height});
+    $('.options').css({"background-color": color, "border-bottom": borderBottom});
 }
 
 /*============================================================================
@@ -416,4 +447,19 @@ function changeEquivalentLink(changingElement, newLang)
             break;
     }
     return changingElement;
+}
+function removeClass(element, className)
+{
+    if($(element).hasClass(className))
+    {
+        $(element).removeClass(className);
+    }
+}
+function addClass(element, className)
+{
+    if(!$(element).hasClass(className))
+    {
+        $(element).addClass(className);
+    }
+
 }

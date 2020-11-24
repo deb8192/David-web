@@ -5,14 +5,12 @@
 	*	Database class used to manage David Web DB.
 	****************************************************/
 
-	include_once('./includes/global-constants.php');
-
 	class Database
 	{
-		private const DB_SERVER = "localhost";
-		private const DB_USER = "DVWUser";
-		private const DB_PASSWORD = "4gJUsHrZRQ4iIbXA";
-		private const DB_NAME = "davidvallsweb";
+		private const DB_SERVER = 'localhost';
+		private const DB_USER = 'DVWUser';
+		private const DB_PASSWORD = '4gJUsHrZRQ4iIbXA';
+		private const DB_NAME = 'davidvallsweb';
 
 		private $connection = null;
 
@@ -26,31 +24,31 @@
 			switch($errType)
 			{
 				case 1:
-					mysqlConnectionError(Constant::MYSQL_CONNECTION_ERROR_MSG);
+					self::mysqlConnectionError(Constant::MYSQL_CONNECTION_ERROR_MSG);
 					break;
 				case 2:
-					mysqlError(Constant::MYSQL_SELECTING_ERROR_MSG);
+					self::mysqlError(Constant::MYSQL_SELECTING_ERROR_MSG);
 					break;
 				case 3:
-					mysqlError(Constant::MYSQL_CONSULTING_ERROR_MSG);
+					self::mysqlError(Constant::MYSQL_CONSULTING_ERROR_MSG);
 					break;
 			}
 		}
 		public function mysqlConnectionError($msg)
 		{
-			if($this->$connection->connect_errno != Constant::ZERO)
+			if($this->connection->connect_errno != Constant::ZERO)
 			{
-				showMysqlErrorMessage($msg, $this->connection->connect_error);
+				self::showMysqlErrorMessage($msg, $this->connection->connect_error);
 				exit();
 			}
 		}
 		
 		public function mysqlError($msg)
 		{
-			if($this->$connection->errno != Constant::ZERO)
+			if($this->connection->errno != Constant::ZERO)
 			{
-				showMysqlErrorMessage($msg, $this->$connection->error);
-				$this->$connection->close();
+				self::showMysqlErrorMessage($msg, $this->connection->error);
+				$this->connection->close();
 				exit();
 			}
 		}
@@ -62,18 +60,18 @@
 		public function connect()
 		{
 			$this->connection = null;
-			$this->connection = @new mysqli(DB_SERVER, DB_USER, DB_PASSWORD);
-			testError(Constant::MYSQL_CONNECTION_ERROR_TYPE);
+			$this->connection = @new mysqli(self::DB_SERVER, self::DB_USER, self::DB_PASSWORD);
+			$this->testError(Constant::MYSQL_CONNECTION_ERROR_TYPE);
 			
 			$this->connection->set_charset("utf8");
-			$this->connection->select_db(DB_NAME);
-			testError(Constant::MYSQL_SELECTING_ERROR_TYPE);
+			$this->connection->select_db(self::DB_NAME);
+			$this->testError(Constant::MYSQL_SELECTING_ERROR_TYPE);
 		}
 		
 		public function executeQuery($query)
 		{
-			$results = $this->$connection->query($query);
-			testError(Constant::MYSQL_CONSULTING_ERROR_TYPE);
+			$results = $this->connection->query($query);
+			$this->testError(Constant::MYSQL_CONSULTING_ERROR_TYPE);
 			
 			return $results;
 		}

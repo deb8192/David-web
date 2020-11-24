@@ -29,6 +29,7 @@ header
     transition: background-color .2s ease-in-out;
     position: fixed;
     width: 100%;
+    top: -.5em;
 }
 .headerActive
 {
@@ -41,19 +42,22 @@ h1
     font-size: 3em;
     margin: 25px auto;
     text-align: center;
-    color: #49f
+    color: #49f;
+    min-width: fit-content;
 }
 h2
 {
     margin: 25px auto;
     font-size: 2em;
-    color: #49f
+    color: #49f;
+    min-width: fit-content;
 }
 h3
 {
     margin: 20px auto;
     font-size: 1.5em;
-    color: #49f
+    color: #49f;
+    min-width: fit-content;
 }
 .logo h2
 {
@@ -115,7 +119,7 @@ button
 {
     width: 50%;
     margin: 0;
-    margin-left: 33%;
+    margin-left: 27%;
 }
 .langFlags button
 {
@@ -157,6 +161,18 @@ button
     display: none;
 }
 /************ Lateral menu *************/
+.flaticon
+{
+    display: block;
+    width: fit-content;
+    z-index: 1;
+    position: relative;
+}
+.flaticon.flaticon-list
+{
+    padding: .5em 2em;
+}
+
 .mainMenu
 {
     width: 100%;
@@ -177,7 +193,8 @@ button
 {
     height: 35px;
     position: relative;
-    transition: left .5s ease-out .2s;
+    transition: left .5s, background-color .5s ease-out .2s;
+    transition-delay: 0s;
     left: -105%;
     text-align: center;
     height: 100%;
@@ -223,9 +240,10 @@ button
 {
     margin: auto;
     margin-left: 0;
+    margin-right: -25%;
     width: 50%;
     position: relative;
-    left: -100%;
+    left: -200%;
     z-index: 1;
     top: 50px;
     transition: left .5s ease-out .2s;
@@ -505,10 +523,6 @@ footer div
     {
         width: 15%;
     }
-}
-@media all and (min-width: 1440px)
-{
-    /*************  Main slider  **************/
     .med
     {
         display: none;
@@ -517,6 +531,10 @@ footer div
     {
         display: block;
     }
+}
+@media all and (min-width: 1440px)
+{
+    /*************  Main slider  **************/
     #mainCV, #mainBio {
         margin: 0 10%;
     }

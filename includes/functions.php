@@ -1,5 +1,4 @@
-<?php
-    require_once('admin/database.php');     
+<?php  
 
     //PHP functions
 
@@ -49,21 +48,28 @@
         }
     }
 
+    function appendChains($chain1, $chain2)
+    {
+        $chain1 .= $chain2;
+        return $chain1;
+    }
+
     //Database functions
     //TO FINISH
-    function findSliderPictures($section)
+    function findSliderPictures($section, $language)
     {
         $db = new Database();
         $db->connect();
 
-        $query = "SELECT urlPic, title, picDescription, picSizeID WHERE picSectionID = '$section' ";
+        $query = "SELECT urlPic, title, picDescription, picSizeID FROM pictures WHERE picSectionID = $section";
         $response = $db->executeQuery($query);
-        if($response->num_rows > Constants::ZERO)
+        if($response->num_rows > Constant::ZERO)
         {
             while($row = $response->fetch_object())
             {
                 $class = $row->picSizeID;
                 $className = "";
+                $languagesRedirection = "../";
                 switch ($class)
                 {
                     case 1:
@@ -76,6 +82,16 @@
                     
                     case 3:
                         $className = "lar";
+                    break;
+                }
+                switch ($language)
+                {                    
+                    case 1:
+                        $row->urlPic = appendChains($languagesRedirection, $row->urlPic);
+                    break;
+                    
+                    case 2:
+                        $row->urlPic = appendChains($languagesRedirection, $row->urlPic);
                     break;
                 }
                 echo '<img class="', $className ,'" src="' , $row->urlPic , '" alt="' , $row->picDescription , '">';

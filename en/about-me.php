@@ -7,7 +7,7 @@
      // DOCTYPE declaration, <html>, <head>, <title>, <meta> y <link>. 
     include_once("../includes/head.php");
 ?>
-    <body onresize = "checkSocial();">
+    <body>
         <?php 
             include_once("../includes/header.php");
         ?>

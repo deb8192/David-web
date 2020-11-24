@@ -1,5 +1,5 @@
 <?php
-    //session_start();
+    //session_start(); 
     include_once('global-constants.php');   //constants for PHP code
     include_once('functions.php');
 
@@ -14,6 +14,7 @@
     //If not default version
     if($engLang || $catLang)
     {
+        require_once('../admin/database.php');  
         //If English version, html lang is "en"
         if($engLang)
         { ?>
@@ -46,7 +47,9 @@
 
     //If default version, html lang is Spanish "es"
     else
-    { ?>
+    { 
+        require_once('admin/database.php');  
+        ?>
         <html lang="<?php echo $lang[0]; ?>">
             <head>
                 <title><?php echo $title; ?></title>
