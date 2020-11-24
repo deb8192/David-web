@@ -142,6 +142,7 @@ button
 {
     opacity: 100;
 }
+/************** Main Slider **************/
 #mainSlider
 {
     top: 0px;
@@ -152,13 +153,13 @@ button
     max-width: 100%;
 }
 
-.med
-{
-    display: block;
-}
-.lar
+.lar, .med
 {
     display: none;
+}
+.sml
+{
+    display: block;
 }
 /************ Lateral menu *************/
 .flaticon
@@ -331,6 +332,7 @@ span.spanCvRight
     margin: 0 auto;
 }
 
+
 /****************** Modal style *******************/
 #background-layer {
     position: fixed;
@@ -363,13 +365,31 @@ footer div
     color: inherit;
     margin: 25px;
 }
-
+@media (min-aspect-ratio: 1/1)
+{
+    .med
+    {
+        display: block;
+    }
+    .sml
+    {
+        display: none;
+    }
+}
 
 @media all and (min-width: 640px)
 {
     .pictureGrid img
     {
         width: 400px;
+    }    
+    .med
+    {
+        display: block;
+    }
+    .sml
+    {
+        display: none;
     }
 }
 

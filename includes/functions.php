@@ -56,7 +56,7 @@
 
     //Database functions
     //TO FINISH
-    function findSliderPictures($section, $language)
+    function findPictures($section, $language)
     {
         $db = new Database();
         $db->connect();

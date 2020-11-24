@@ -13,7 +13,7 @@
         ?>
         <main id="mainSlider">
             <?php
-                findSliderPictures(Constant::ONE, Constant::ZERO);
+                findPictures(Constant::ONE, Constant::ZERO);
             ?>
 
         </main>
