@@ -68,7 +68,7 @@ $(document).ready(function(){
     });
 
     /*============================================================================
-                            Loading modal picture
+                            Modal pictures actions
     ==============================================================================*/
     $(".galeryPic").click(function(){
         modalPicture($(".galeryPic").find("img").attr("src"));
@@ -119,19 +119,48 @@ function showSocial(checkBox)
     Permitir cambiar de foto
     ocultar barra de scroll
     evitar que se cree otro modal si ya hay uno*/
-function createModal(html)
+function createModal(modal)
 {
-    let div = $("<div></div>");
-    div.attr('id', 'background-layer');
-    div.html(html);
-    $('body').append(div);
+    let div = $("<div></div>"),
+    html = $("<button>")
+            .text("X");
+    html.attr("class", "closeModal");
+    html.attr("onclick", "removeModal()")
+    
+    div.attr('id', 'modal');
+    
+    modal.prepend(html);
+    div.append(modal);
+    $('#mainPic').append(div);
+    return div;
 }
 function modalPicture(imgDir)
 {
-    let html = $("<article></article")
+    let html = $("<div></div>")
         .append($("<img></img>")
-            .attr("src", imgDir));
-    createModal(html);
+            .attr("src", imgDir)),
+    modal = createModal(html);
+    createModalPagination(modal);
+}
+
+function removeModal()
+{
+    $("#modal").remove();
+}
+
+/*============================================================================
+                                Pagitnation
+==============================================================================*/
+
+function createModalPagination(modal)
+{
+    let leftArrow = $("<i></i>"),
+    rightArrow = $("<i></i>");
+
+    leftArrow.attr("class", "flaticon flaticon-left-arrow");
+    rightArrow.attr("class", "flaticon flaticon-next");
+    modal.prepend(leftArrow);
+    modal.append(rightArrow);
 }
 
 //TO FINISH
