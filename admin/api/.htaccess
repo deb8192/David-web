@@ -1,0 +1,23 @@
+# File created to configure the symbolic links used in all the web requests
+
+# We will allow the use of symbolic links.
+# We will allow the server to rewrite uris
+Options +FollowSymLikns
+RewriteEngine Options
+
+# It change the absolute path D:\xampp\htdocs\david-web\admin\api
+# to the following symbolic path
+RewriteBase /david-web/admin/api
+
+##################################################
+############      PICTURES RULES     #############
+##################################################
+
+############       GET PICTURES      #############
+# This rul redirect all symbolic links related
+# to GET PICTURES to the url api/pictures/getpictures.php
+
+RewriteCond %{THE_REQUEST} ^GET        #Only GET requests
+RewriteCond %{REQUEST_FILENAME} !-f    #If there's no file
+RewriteCond %{REQUEST_FILENAME} !-d    #IF there's no directory
+RewriteRule ^fotos(.*)$ pictures/getpictures.php?prm=$1&%{QUERY_STRING} [L]
