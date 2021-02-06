@@ -18,7 +18,9 @@ _englishPages = ["home.php", "cv.php", "pictures.php", "videobook.php", "news.ph
 _catalanPages = ["home.php", "curriculum.php", "fotos.php", "videobook.php", "noticies.php", "sobre-mi.php", "contacte.php"],
 
 //Directories
-_serverFunctions = "includes/functions.php";
+_serverFunctions = "includes/functions.php",
+_closeIcon = "images/web-icons/icons/times-solid.svg",
+_closeIconHover = "images/web-icons/icons/times-solid-hover.svg";
 
 //Direct JQuery
 $(document).ready(function(){
@@ -123,13 +125,17 @@ function createModal(modal)
 {
     let div = $("<div></div>"),
     html = $("<button>")
-            .text("X");
+            .append($("<img></img>")
+                .attr({"src":_closeIcon, "class":"bottom-img"}))
+            .append($("<img></img>")
+                .attr({"src":_closeIconHover, "class":"top-img"}));
+
     html.attr("class", "closeModal");
     html.attr("onclick", "removeModal()")
     
-    div.attr('id', 'modal');
+    div.attr("id", "modal");
     
-    modal.prepend(html);
+    modal.contents().prepend(html);
     div.append(modal);
     $('#mainPic').append(div);
     return div;
@@ -137,8 +143,11 @@ function createModal(modal)
 function modalPicture(imgDir)
 {
     let html = $("<div></div>")
-        .append($("<img></img>")
-            .attr("src", imgDir)),
+        .attr("id","content")
+        .append($("<div></div>")
+            .attr("id","contentAndClose")
+            .append($("<img></img>")
+            .attr("src",imgDir))),
     modal = createModal(html);
     createModalPagination(modal);
 }
@@ -155,12 +164,20 @@ function removeModal()
 function createModalPagination(modal)
 {
     let leftArrow = $("<i></i>"),
-    rightArrow = $("<i></i>");
+    rightArrow = $("<i></i>"),
+    leftButton = $("<button></button>"),
+    rightButton = $("<button></button>");
 
     leftArrow.attr("class", "flaticon flaticon-left-arrow");
     rightArrow.attr("class", "flaticon flaticon-next");
-    modal.prepend(leftArrow);
-    modal.append(rightArrow);
+    leftButton.attr("class", "preBtn");
+    rightButton.attr("class", "nextBtn");
+
+    leftButton.append(leftArrow);
+    rightButton.append(rightArrow);
+    
+    $("#content").prepend(leftButton);
+    $("#content").append(rightButton);
 }
 
 //TO FINISH

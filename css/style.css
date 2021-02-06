@@ -72,11 +72,11 @@ a
 {
     color: black;
 }
-a, img, button, .pictureGrid article
+a, img, button, .pictureGrid article, i
 {
     transition: .5s;
 }
-a:hover, button:hover
+a:hover, button:hover, .preBtn>i:hover, .nextBtn>i:hover
 {
     color: #FB0;
     text-decoration: none;
@@ -96,6 +96,7 @@ button
     background: lightsteelblue;
     padding: 15px;
     margin: 25px auto;
+    outline: none;
 }
 
 /******************  Header  ******************/
@@ -348,16 +349,48 @@ span.spanCvRight
     position: absolute;
     top: 5em;
     left: 25%;
-    box-shadow: 5px 5px #27323260;
+    display: inline-flex;
 }
 
-/* Modal close button */
-.closeModal
+/* Modal buttons */
+.closeModal, .preBtn, .nextBtn, .preBtn>i, .nextBtn>i
 {
     border: none;
     background-color: transparent;
     color: #fff;
-    margin-right: 0%;
+    margin: 0 0 0 auto;
+    height: fit-content;
+}
+.closeModal
+{
+    margin: 0 0 0 auto;
+}
+
+.closeModal>img
+{
+    width: 1em;
+}
+
+.closeModal>.top-img
+{
+    position: absolute;
+    transform: translate(-1em);
+}
+
+.preBtn, .nextBtn
+{
+    font-size: 2em;
+    margin: auto;
+}
+
+.preBtn:hover
+{
+    transform: translate(-16px);
+}
+
+.nextBtn:hover
+{
+    transform: translate(16px);
 }
 
 /*******************  Footer  *********************/
