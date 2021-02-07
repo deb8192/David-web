@@ -53,6 +53,11 @@
         $chain1 .= $chain2;
         return $chain1;
     }
+	
+	function testRequests()
+	{
+		echo '<p>THIS WORKS PROPERLY =D</p>';
+	}
 
     //Database functions
     //TO FINISH

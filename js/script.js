@@ -18,7 +18,9 @@ _englishPages = ["home.php", "cv.php", "pictures.php", "videobook.php", "news.ph
 _catalanPages = ["home.php", "curriculum.php", "fotos.php", "videobook.php", "noticies.php", "sobre-mi.php", "contacte.php"],
 
 //Directories
-_serverFunctions = "includes/functions.php",
+_serverGetFunction = 'GET',
+_serverRequests = 'admin/api',
+_serverPictures = '/pictures',
 _closeIcon = "images/web-icons/icons/times-solid.svg",
 _closeIconHover = "images/web-icons/icons/times-solid-hover.svg";
 
@@ -75,6 +77,8 @@ $(document).ready(function(){
     $(".galeryPic").click(function(){
         modalPicture($(".galeryPic").find("img").attr("src"));
     });
+
+    $("body").append(loadSliderPictures(false));
 })
 
 /*============================================================================
@@ -117,7 +121,6 @@ function showSocial(checkBox)
 
 /*TO FINISH: 
     Centrar modal en CSS
-    Permitir cerrar modal
     Permitir cambiar de foto
     ocultar barra de scroll
     evitar que se cree otro modal si ya hay uno*/
@@ -181,17 +184,37 @@ function createModalPagination(modal)
 }
 
 //TO FINISH
-/*function loadSliderPictures(notSpanish)
+function loadSliderPictures(notSpanish)
 {
     var xmlhttpRequest = new XMLHttpRequest();
 
-    xmlhttpRequest.onreadystatechange = function(){
+    xmlhttpRequest.onreadystatechange = function () {
+        var DONE = 4; // readyState 4 means the request is done.
+        var OK = 200; // status 200 is a successful return.
+        if (xmlhttpRequest.readyState === DONE) {
+            if (xmlhttpRequest.status === OK) {
+                console.log(xmlhttpRequest.responseText); // 'This is the output.'
+            } else {
+                console.log('Error: ' + xmlhttpRequest.status); // An error occurred during the request.
+            }
+        }
+    };
+    
+    xmlhttpRequest.open(_serverGetFunction, _serverRequests + _serverPictures + '?pag=1&test=2', _true);
+    xmlhttpRequest.send();
 
-    }
-
-    xmlhttpRequest.open("POST", _serverFunctions, _true);
-    xmlhttpRequestr.send();
-}*/
+    /*$.ajax({
+        type: 'GET',
+        url: _serverGetFunction + _serverPictures,
+        dataType: "JSON",
+        success: function (data) {
+            console.log(data);
+        },
+        error: function(error) {
+            console.log('Error: ' + error);
+        }
+    });*/
+}
 
 //!MAYBE IT WILL DISSAPEAR
 
