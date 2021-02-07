@@ -1,28 +1,103 @@
 <?php
 // FICHERO: api/get/pictures.php
 /* =================================================================================
-   PETICIONES GET ADMITIDAS:
+   Allowed requests:
    =================================================================================*/
 // Si se pasa la cabecera "Authorization" con el valor "{LOGIN}:{TOKEN}", devuelve dos campos más: siguiendo, propio, cuyo valor será 1 ó 0 en función de si el usuario si el usuario está siguiendo el artículo y/o es suyo, o no, respectivamente.
 
-//   api/pictures   -----------------> devuelve todas las fotos. Es la peticion de la galeria
-//   api/pictures/{ID}  -------------> devuelve la foto seleccionada para el modal de la galeria de fotos
+//   api/pictures   -----------------> returns all pictures. It's gallery request
+//   api/pictures/{ID}  -------------> returns gallery pictures' modal picture.
 
 // =================================================================================
-// INCLUSION DE LA CONEXION A LA BD
+// Connecting with DB
 // =================================================================================
     require_once('../../../includes/global-constants.php');
     require_once('../../database.php');
     // instantiate database and product object
     $db    = new Database();
-    $dbCon = $db->connect();
+    $db->connect();
 
     echo '<p>THIS WORKS PROPERLY =D</p>';
+
+    //These params are all which starts after "pictures" word in url, not those that starts after "?"
     if(strlen($_GET['prm']) > 0)
-        $RECURSO = explode("/", substr($_GET['prm'],1));
+        $RESOURCE = explode("/", substr($_GET['prm'],1));
     else
-        $RECURSO = [];
-    // Se pillan los parámetros de la petición
+        $RESOURCE = [];
+    // get request parameters
     $PARAMS = array_slice($_GET, 1, count($_GET) - 1,true);
+
+// =================================================================================
+// JSON output configuration and CORS for AJAX requests
+// =================================================================================
+header("Access-Control-Allow-Orgin: *");
+//header("Access-Control-Allow-Methods: *");
+// header("Access-Control-Allow-Methods: GET, POST, DELETE, PUT, PATCH");
+header("Access-Control-Allow-Methods: GET, POST, DELETE");
+header("Content-Type: application/json; charset=UTF-8");
+
+// =================================================================================
+// Preparing reponse
+// =================================================================================
+$R                   = [];  // result.
+$RESPONSE_CODE       = 200; // reponse code: 200 - OK
+$mysql               = '';  // DB consult
+$VALUES              = [];  // Needed values for the request
+$TOTAL_COINCIDENCES  = -1;  // DB coincidences
+// =================================================================================
+// Default SQL for gallery pictures
+// =================================================================================
+$mysql  = 'select p.* FROM pictures where';
+
+// It checks if there is and resource ID
+$ID = array_shift($RESOURCE); 
+if(is_numeric($ID))
+{
+    
+    $mysql  = "SELECT urlPic, title, picDescription, picSizeID FROM pictures WHERE picSectionID = $ID ";
+    $VALUES = [];
+    $VALUES[':ID_PIC'] = $ID;
+}
+
+// =================================================================================
+// Execute DB request
+// =================================================================================
+$response = $response = $db->executeQuery($mysql);
+if($response->num_rows > Constant::ZERO) // execute query OK
+{
+    $RESPONSE_CODE  = 200;
+    $R['RESULTADO'] = 'OK';
+    $R['CODIGO']    = $RESPONSE_CODE;
+    $FILAS          = [];
+
+    if($TOTAL_COINCIDENCES > -1)
+    {
+        $R['TOTAL_COINCIDENCES']  = $TOTAL_COINCIDENCES;
+        $R['PAGINA']               = $pagina;
+        $R['REGISTROS_POR_PAGINA'] = $regsPorPagina;
+    }
+    while( $row = $response->fetch_object() )
+        $FILAS[] = $row;
+
+    $stmt->closeCursor();
+    $R['FILAS'] = $FILAS;
+}
+else
+{
+    $RESPONSE_CODE    = 500;
+    $R['CODIGO']      = $RESPONSE_CODE;
+    $R['RESULTADO']   = 'ERROR' ;
+    $R['DESCRIPCION'] = 'Se ha producido un error en el servidor al ejecutar la consulta.';
+}
+// =================================================================================
+// SE CIERRA LA CONEXION CON LA BD
+// =================================================================================
+$db->closeConnection();
+// =================================================================================
+// SE DEVUELVE EL RESULTADO DE LA CONSULTA
+// =================================================================================
+http_response_code($RESPONSE_CODE);
+echo json_encode($R);
+?>
 
 ?>

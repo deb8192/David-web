@@ -66,6 +66,8 @@
 			$this->connection->set_charset("utf8");
 			$this->connection->select_db(self::DB_NAME);
 			$this->testError(Constant::MYSQL_SELECTING_ERROR_TYPE);
+			
+			return $this->connection;
 		}
 		
 		public function executeQuery($query)

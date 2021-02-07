@@ -21,6 +21,8 @@ _catalanPages = ["home.php", "curriculum.php", "fotos.php", "videobook.php", "no
 _serverGetFunction = 'GET',
 _serverRequests = 'admin/api',
 _serverPictures = '/pictures',
+_urlParamBegin = '?',
+_urlParamAdd = '&',
 _closeIcon = "images/web-icons/icons/times-solid.svg",
 _closeIconHover = "images/web-icons/icons/times-solid-hover.svg";
 
@@ -186,7 +188,8 @@ function createModalPagination(modal)
 //TO FINISH
 function loadSliderPictures(notSpanish)
 {
-    var xmlhttpRequest = new XMLHttpRequest();
+    var parmSectionID = '/1',
+    xmlhttpRequest = new XMLHttpRequest();
 
     xmlhttpRequest.onreadystatechange = function () {
         var DONE = 4; // readyState 4 means the request is done.
@@ -200,20 +203,8 @@ function loadSliderPictures(notSpanish)
         }
     };
     
-    xmlhttpRequest.open(_serverGetFunction, _serverRequests + _serverPictures + '?pag=1&test=2', _true);
+    xmlhttpRequest.open(_serverGetFunction, _serverRequests + _serverPictures + parmSectionID, _true);
     xmlhttpRequest.send();
-
-    /*$.ajax({
-        type: 'GET',
-        url: _serverGetFunction + _serverPictures,
-        dataType: "JSON",
-        success: function (data) {
-            console.log(data);
-        },
-        error: function(error) {
-            console.log('Error: ' + error);
-        }
-    });*/
 }
 
 //!MAYBE IT WILL DISSAPEAR
