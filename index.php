@@ -12,10 +12,7 @@
             include_once("includes/header.php");
         ?>
         <main id="mainSlider">
-            <?php
-                findPictures(Constant::ONE, Constant::ZERO);
-            ?>
-
+           
         </main>
         <?php
             //Footer declaration

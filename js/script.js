@@ -24,7 +24,13 @@ _serverPictures = '/pictures',
 _urlParamBegin = '?',
 _urlParamAdd = '&',
 _closeIcon = "images/web-icons/icons/times-solid.svg",
-_closeIconHover = "images/web-icons/icons/times-solid-hover.svg";
+_closeIconHover = "images/web-icons/icons/times-solid-hover.svg",
+
+//Server requests
+_done = 4, // readyState 4 means the request is done.
+_ok = 200, // status 200 is a successful return.
+_serverError = 500,
+_errorNotFound = 404;
 
 //Direct JQuery
 $(document).ready(function(){
@@ -74,13 +80,16 @@ $(document).ready(function(){
     });
 
     /*============================================================================
-                            Modal pictures actions
+                                Home functions
     ==============================================================================*/
+    loadSliderPictures();
+    /*============================================================================
+                            Gallery pictures functions
+    ==============================================================================*/
+    $( ".pictureGrid" ).append(loadGridPictures());
     $(".galeryPic").click(function(){
         modalPicture($(".galeryPic").find("img").attr("src"));
     });
-
-    $("body").append(loadSliderPictures(false));
 })
 
 /*============================================================================
@@ -118,85 +127,37 @@ function showSocial(checkBox)
 }
 
 /*============================================================================
-                            Functions related with modals
+                        Main Slider Functions
 ==============================================================================*/
 
-/*TO FINISH: 
-    Centrar modal en CSS
-    Permitir cambiar de foto
-    ocultar barra de scroll
-    evitar que se cree otro modal si ya hay uno*/
-function createModal(modal)
-{
-    let div = $("<div></div>"),
-    html = $("<button>")
-            .append($("<img></img>")
-                .attr({"src":_closeIcon, "class":"bottom-img"}))
-            .append($("<img></img>")
-                .attr({"src":_closeIconHover, "class":"top-img"}));
-
-    html.attr("class", "closeModal");
-    html.attr("onclick", "removeModal()")
-    
-    div.attr("id", "modal");
-    
-    modal.contents().prepend(html);
-    div.append(modal);
-    $('#mainPic').append(div);
-    return div;
-}
-function modalPicture(imgDir)
-{
-    let html = $("<div></div>")
-        .attr("id","content")
-        .append($("<div></div>")
-            .attr("id","contentAndClose")
-            .append($("<img></img>")
-            .attr("src",imgDir))),
-    modal = createModal(html);
-    createModalPagination(modal);
-}
-
-function removeModal()
-{
-    $("#modal").remove();
-}
-
-/*============================================================================
-                                Pagitnation
-==============================================================================*/
-
-function createModalPagination(modal)
-{
-    let leftArrow = $("<i></i>"),
-    rightArrow = $("<i></i>"),
-    leftButton = $("<button></button>"),
-    rightButton = $("<button></button>");
-
-    leftArrow.attr("class", "flaticon flaticon-left-arrow");
-    rightArrow.attr("class", "flaticon flaticon-next");
-    leftButton.attr("class", "preBtn");
-    rightButton.attr("class", "nextBtn");
-
-    leftButton.append(leftArrow);
-    rightButton.append(rightArrow);
-    
-    $("#content").prepend(leftButton);
-    $("#content").append(rightButton);
-}
-
-//TO FINISH
-function loadSliderPictures(notSpanish)
+//Functions that ask to server to get main Slider pictures
+function loadSliderPictures()
 {
     var parmSectionID = '/1',
+    data,
+    //We get html lang attribute to send the correct language code to showSlidePictures() function
+    lang = getLangPage();
+    //Request creation
     xmlhttpRequest = new XMLHttpRequest();
 
+    //Request execution
     xmlhttpRequest.onreadystatechange = function () {
-        var DONE = 4; // readyState 4 means the request is done.
-        var OK = 200; // status 200 is a successful return.
-        if (xmlhttpRequest.readyState === DONE) {
-            if (xmlhttpRequest.status === OK) {
-                console.log(xmlhttpRequest.responseText); // 'This is the output.'
+        if (xmlhttpRequest.readyState === _done) {
+            if (xmlhttpRequest.status === _ok) {
+                console.log(xmlhttpRequest.status); // 'This is the output.'
+                data = JSON.parse(xmlhttpRequest.response)
+                data.FILAS.forEach(function(obj){
+                    if (lang == _catalan)
+                    {
+                        showSlidePictures(obj, _catalanSel);
+                    }
+                    else if (lang == _english)
+                    {
+                        showSlidePictures(obj, _englishSel);
+                    }
+                    else showSlidePictures(obj, _spanishSel);
+                });
+                
             } else {
                 console.log('Error: ' + xmlhttpRequest.status); // An error occurred during the request.
             }
@@ -207,25 +168,186 @@ function loadSliderPictures(notSpanish)
     xmlhttpRequest.send();
 }
 
-//!MAYBE IT WILL DISSAPEAR
+function showSlidePictures(picture, language)
+{
+    var type = parseInt(picture.picSizeID),
+    className = "",
+    languagesRedirection = "../",
+    finalUrl = picture.urlPic,
+    html;
+    switch (type)
+    {
+        case 1:
+            className = "sml";
+        break;
+        
+        case 2:
+            className = "med";
+        break;
+        
+        case 3:
+            className = "lar";
+        break;
+    }
+    if(language != _spanishSel)
+    {
+        finalUrl = languagesRedirection.concat(picture.urlPic);
+    }
+    html = $("<img>");
+    html.attr("class", className);
+    html.attr("src", finalUrl);
+    html.attr("alt", picture.picDescription);
+    
+    $("#mainSlider").append(html);
+}
+
+/*============================================================================
+                            Functions related with modals
+==============================================================================*/
+
+/*TO FINISH: 
+    Centrar modal en CSS
+    Permitir cambiar de foto
+    ocultar barra de scroll
+    evitar que se cree otro modal si ya hay uno*/
+    function createModal(modal)
+    {
+        let div = $("<div></div>"),
+        html = $("<button>")
+                .append($("<img></img>")
+                    .attr({"src":_closeIcon, "class":"bottom-img"}))
+                .append($("<img></img>")
+                    .attr({"src":_closeIconHover, "class":"top-img"}));
+    
+        html.attr("class", "closeModal");
+        html.attr("onclick", "removeModal()")
+        
+        div.attr("id", "modal");
+        
+        modal.contents().prepend(html);
+        div.append(modal);
+        $('#mainPic').append(div);
+        return div;
+    }
+    function modalPicture(imgDir)
+    {
+        let html = $("<div></div>")
+            .attr("id","content")
+            .append($("<div></div>")
+                .attr("id","contentAndClose")
+                .append($("<img></img>")
+                .attr("src",imgDir))),
+        modal = createModal(html);
+        createModalPagination(modal);
+    }
+    
+    function removeModal()
+    {
+        $("#modal").remove();
+    }
+
+    //Modal pagination function
+    function createModalPagination(modal)
+    {
+        let leftArrow = $("<i></i>"),
+        rightArrow = $("<i></i>"),
+        leftButton = $("<button></button>"),
+        rightButton = $("<button></button>");
+    
+        leftArrow.attr("class", "flaticon flaticon-left-arrow");
+        rightArrow.attr("class", "flaticon flaticon-next");
+        leftButton.attr("class", "preBtn");
+        rightButton.attr("class", "nextBtn");
+    
+        leftButton.append(leftArrow);
+        rightButton.append(rightArrow);
+        
+        $("#content").prepend(leftButton);
+        $("#content").append(rightButton);
+    }
+/*============================================================================
+                        Pictures functions
+==============================================================================*/
+
+//Functions that ask to server to get grid pictures
+function loadGridPictures()
+{
+    var parmSectionID = '/2',
+    data,
+    //We get html lang attribute to send the correct language code to showSlidePictures() function
+    lang = getLangPage();
+    //Request creation
+    xmlhttpRequest = new XMLHttpRequest();
+
+    //Request execution
+    xmlhttpRequest.onreadystatechange = function () {
+        if (xmlhttpRequest.readyState === _done) {
+            if (xmlhttpRequest.status === _ok) {
+                console.log(xmlhttpRequest.status); // 'This is the output.'
+                data = JSON.parse(xmlhttpRequest.response)
+                data.FILAS.forEach(function(obj){
+                    if (lang == _catalan)
+                    {
+                        return showGridPictures(obj, _catalanSel);
+                    }
+                    else if (lang == _english)
+                    {
+                        return showGridPictures(obj, _englishSel);
+                    }
+                    else return showGridPictures(obj, _spanishSel);
+                });
+                
+            } else {
+                console.log('Error: ' + xmlhttpRequest.status); // An error occurred during the request.
+            }
+        }
+    };
+    
+    xmlhttpRequest.open(_serverGetFunction, _serverRequests + _serverPictures + parmSectionID, _true);
+    xmlhttpRequest.send();
+}
 
 //Fotos loader function (provisional)
-function loadPictures(notSpanish)
+function showGridPictures(picture, language)
 {
-    for(let i = 0; i < 12; i++)
+    var type = parseInt(picture.picSizeID),
+    className = "",
+    languagesRedirection = "../",
+    finalUrl = picture.urlPic,
+    html;
+    switch (type)
     {
-        let html = '<img class="picture" src=" ';
-        if(notSpanish)
-        {
-            html += '../';
-        }
-        html += 'images/pictures/fotos/thumbnail/img-thumb-prov-1.jpg" alt="img-thumb-prov-1-${i}">';
+        case 1:
+            className = "sml";
+        break;
+        
+        case 2:
+            className = "med";
+        break;
+        
+        case 3:
+            className = "lar";
+        break;
+    }
+    if(language != _spanishSel)
+    {
+        finalUrl = languagesRedirection.concat(picture.urlPic);
+    }
+    if(type == 1)
+    {
+        html = $("<img>");
+        html.attr("class", className);
+        html.attr("src", finalUrl);
+        html.attr("alt", picture.picDescription);
+
         let article = document.createElement("article")
         article.innerHTML = html;
         article.className = "galeryPic";
-        $(".pictureGrid").append(article);
+        return article;
     }
 }
+
+
 
 function changeLink(button)
 {
@@ -522,4 +644,14 @@ function addClass(element, className)
         $(element).addClass(className);
     }
 
+}
+
+/*============================================================================
+                            Getters
+==============================================================================*/
+
+//Functions that ask to server to get main Slider pictures
+function getLangPage()
+{
+    return $('html').attr('lang');
 }

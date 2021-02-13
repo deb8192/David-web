@@ -17,8 +17,6 @@
     $db    = new Database();
     $db->connect();
 
-    echo '<p>THIS WORKS PROPERLY =D</p>';
-
     //These params are all which starts after "pictures" word in url, not those that starts after "?"
     if(strlen($_GET['prm']) > 0)
         $RESOURCE = explode("/", substr($_GET['prm'],1));
@@ -47,7 +45,7 @@ $TOTAL_COINCIDENCES  = -1;  // DB coincidences
 // =================================================================================
 // Default SQL for gallery pictures
 // =================================================================================
-$mysql  = 'select p.* FROM pictures where';
+$mysql  = 'select p.* FROM pictures ';
 
 // It checks if there is and resource ID
 $ID = array_shift($RESOURCE); 
@@ -56,7 +54,7 @@ if(is_numeric($ID))
     
     $mysql  = "SELECT urlPic, title, picDescription, picSizeID FROM pictures WHERE picSectionID = $ID ";
     $VALUES = [];
-    $VALUES[':ID_PIC'] = $ID;
+    $R['SECCION'] = $ID;
 }
 
 // =================================================================================
@@ -79,7 +77,6 @@ if($response->num_rows > Constant::ZERO) // execute query OK
     while( $row = $response->fetch_object() )
         $FILAS[] = $row;
 
-    $stmt->closeCursor();
     $R['FILAS'] = $FILAS;
 }
 else
@@ -98,6 +95,4 @@ $db->closeConnection();
 // =================================================================================
 http_response_code($RESPONSE_CODE);
 echo json_encode($R);
-?>
-
 ?>

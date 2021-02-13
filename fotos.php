@@ -22,7 +22,7 @@
             include_once("includes/footer.php");
         ?>
         <script>
-            loadPictures(<?php echo Constant::FALSE_CONST ?>);
+            loadGridPictures();
         </script>
     </body>
 </html>
