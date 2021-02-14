@@ -145,7 +145,7 @@ button
 {
     opacity: 100;
 }
-/************** Main Slider **************/
+/************** Pictures design **************/
 #mainSlider
 {
     top: 0px;
@@ -156,11 +156,11 @@ button
     max-width: 100%;
 }
 
-.lar, .med
+.galeryPicLar, .lar, .galeryPicMed, .med
 {
     display: none;
 }
-.sml
+.galeryPicSml, .sml
 {
     display: block;
 }
@@ -423,15 +423,11 @@ footer div
 
 @media all and (min-width: 640px)
 {
-    .pictureGrid img
-    {
-        width: 400px;
-    }    
-    .med
+    .galeryPicMed, .med
     {
         display: block;
     }
-    .sml
+    .galeryPicSml, .sml
     {
         display: none;
     }

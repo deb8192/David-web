@@ -6,6 +6,14 @@ _zero = 0,
 _one = 1,
 _two = 2,
 
+//Sizes constants
+
+_small = 1,
+_medium = 2,
+_large = 3,
+
+//Languages constants
+
 _spanish = "es",
 _english = "en",
 _catalan = "cat",
@@ -86,9 +94,15 @@ $(document).ready(function(){
     /*============================================================================
                             Gallery pictures functions
     ==============================================================================*/
-    $( ".pictureGrid" ).append(loadGridPictures());
-    $(".galeryPic").click(function(){
-        modalPicture($(".galeryPic").find("img").attr("src"));
+    if($("#mainPic").length > _zero)
+    {
+        loadGridPictures();
+    }
+    $(".galeryPicMed").click(function(){
+        modalPicture($(".galeryPicLar").find("image").attr("src"));
+    });
+    $(".galeryPicSml").click(function(){
+        modalPicture($(".galeryPicLar").find("image").attr("src"));
     });
 })
 
@@ -273,10 +287,12 @@ function showSlidePictures(picture, language)
 function loadGridPictures()
 {
     var parmSectionID = '/2',
+    picGrid = $("<div></div>"),
     data,
     //We get html lang attribute to send the correct language code to showSlidePictures() function
     lang = getLangPage();
     //Request creation
+    picGrid.attr("class", "pictureGrid")
     xmlhttpRequest = new XMLHttpRequest();
 
     //Request execution
@@ -288,15 +304,15 @@ function loadGridPictures()
                 data.FILAS.forEach(function(obj){
                     if (lang == _catalan)
                     {
-                        return showGridPictures(obj, _catalanSel);
+                        picGrid.append(showGridPictures(obj, _catalanSel));
                     }
                     else if (lang == _english)
                     {
-                        return showGridPictures(obj, _englishSel);
+                        picGrid.append(showGridPictures(obj, _englishSel));
                     }
-                    else return showGridPictures(obj, _spanishSel);
+                    else picGrid.append(showGridPictures(obj, _spanishSel));
                 });
-                
+                $( "#mainPic" ).append(picGrid);
             } else {
                 console.log('Error: ' + xmlhttpRequest.status); // An error occurred during the request.
             }
@@ -311,40 +327,38 @@ function loadGridPictures()
 function showGridPictures(picture, language)
 {
     var type = parseInt(picture.picSizeID),
-    className = "",
+    className = "galeryPic",
     languagesRedirection = "../",
     finalUrl = picture.urlPic,
     html;
     switch (type)
     {
         case 1:
-            className = "sml";
+            className = className.concat("Sml");
         break;
         
         case 2:
-            className = "med";
+            className = className.concat("Med");
         break;
         
         case 3:
-            className = "lar";
+            className = className.concat("Lar");
         break;
     }
     if(language != _spanishSel)
     {
         finalUrl = languagesRedirection.concat(picture.urlPic);
     }
-    if(type == 1)
-    {
-        html = $("<img>");
-        html.attr("class", className);
-        html.attr("src", finalUrl);
-        html.attr("alt", picture.picDescription);
+    
+    html = $("<img>");
+    html.attr("class", "image");
+    html.attr("src", finalUrl);
+    html.attr("alt", picture.picDescription);
 
-        let article = document.createElement("article")
-        article.innerHTML = html;
-        article.className = "galeryPic";
-        return article;
-    }
+    let article = $("<article>")
+    article.append(html);
+    article.attr("class", className);
+    return article;
 }
 
 

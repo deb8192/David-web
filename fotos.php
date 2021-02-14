@@ -21,8 +21,5 @@
             //Footer declaration
             include_once("includes/footer.php");
         ?>
-        <script>
-            loadGridPictures();
-        </script>
     </body>
 </html>

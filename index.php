@@ -18,7 +18,5 @@
             //Footer declaration
             include_once("includes/footer.php");
         ?>
-        <script>
-        </script>
     </body>
 </html>
