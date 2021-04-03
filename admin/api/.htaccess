@@ -14,10 +14,24 @@ RewriteBase /davidweb/admin/api/
 ##################################################
 
 ############       GET PICTURES      #############
-# This rul redirect all symbolic links related
+# This rule redirects all symbolic links related
 # to GET PICTURES to the url api/get/pictures.php
 
 RewriteCond %{THE_REQUEST} ^GET
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^pictures(.*)$ get/pictures.php?prm=$1&%{QUERY_STRING} [L]
+
+##################################################
+############      VIDEOS RULES     #############
+##################################################
+
+############       GET VIDEOS      #############
+# This rule redirects all symbolic links related
+# to GET VIDEOS to the url api/get/videos.php
+
+RewriteCond %{THE_REQUEST} ^GET
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^videos(.*)$ get/videos.php?prm=$1&%{QUERY_STRING} [L]
+

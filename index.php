@@ -12,6 +12,7 @@
             include_once("includes/header.php");
         ?>
         <main id="mainSlider">
+            <h1 class="oculto">David Valls actor</h1>
            
         </main>
         <?php

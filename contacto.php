@@ -11,9 +11,18 @@
         <?php 
             include_once("includes/header.php");
         ?>
-        <main id="mainSlider">
-            <img class="med" src="images/pictures/fotos/MainSlide-med.jpg" alt="foto-principal">
-            <img class="big" src="images/pictures/fotos/MainSlide.jpg" alt="foto-principal">
+        <main id="mainContact">
+            <h1>CONTACTO</h1>
+            <article class="columns">
+                <div class="column-50 column-textAlign-center">
+                    <h2>Teléfono</h2>
+                    <p>664 041 041</p>
+                </div>
+                <div class="column-50 column-textAlign-center">
+                    <h2>Email</h2>
+                    <p>davidvallsg@gmail.com</p>
+                </div>
+            </article>
         </main>
         <?php
             //Footer declaration

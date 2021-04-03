@@ -11,6 +11,7 @@ _two = 2,
 _small = 1,
 _medium = 2,
 _large = 3,
+_totalSizes = 3,
 
 //Languages constants
 
@@ -21,14 +22,15 @@ _spanishSel = 0,
 _englishSel = 1,
 _catalanSel = 2,
 
-_spanishPages = ["index.php", "curriculum.php", "fotos.php", "videobook.php", "noticias.php", "sobre-mi.php", "contacto.php"],
-_englishPages = ["home.php", "cv.php", "pictures.php", "videobook.php", "news.php", "about-me.php", "contact.php"],
-_catalanPages = ["home.php", "curriculum.php", "fotos.php", "videobook.php", "noticies.php", "sobre-mi.php", "contacte.php"],
+_spanishPages = ["index.php", "cv.php", "book.php", "reel.php", "noticias.php", "sobre-mi.php", "contacto.php"],
+_englishPages = ["home.php", "cv.php", "book.php", "reel.php", "news.php", "about-me.php", "contact.php"],
+_catalanPages = ["home.php", "cv.php", "book.php", "reel.php", "noticies.php", "sobre-mi.php", "contacte.php"],
 
 //Directories
 _serverGetFunction = 'GET',
 _serverRequests = 'admin/api',
 _serverPictures = '/pictures',
+_serverVideos = '/videos',
 _urlParamBegin = '?',
 _urlParamAdd = '&',
 _closeIcon = "images/web-icons/icons/times-solid.svg",
@@ -98,12 +100,10 @@ $(document).ready(function(){
     {
         loadGridPictures();
     }
-    $(".galeryPicMed").click(function(){
-        modalPicture($(".galeryPicLar").find("image").attr("src"));
-    });
-    $(".galeryPicSml").click(function(){
-        modalPicture($(".galeryPicLar").find("image").attr("src"));
-    });
+    if($("#mainVideoBook").length > _zero)
+    {
+        loadVideo($("#mainVideoBook"));
+    }
 })
 
 /*============================================================================
@@ -220,65 +220,168 @@ function showSlidePictures(picture, language)
 ==============================================================================*/
 
 /*TO FINISH: 
-    Centrar modal en CSS
-    Permitir cambiar de foto
-    ocultar barra de scroll
-    evitar que se cree otro modal si ya hay uno*/
-    function createModal(modal)
-    {
-        let div = $("<div></div>"),
-        html = $("<button>")
-                .append($("<img></img>")
-                    .attr({"src":_closeIcon, "class":"bottom-img"}))
-                .append($("<img></img>")
-                    .attr({"src":_closeIconHover, "class":"top-img"}));
-    
-        html.attr("class", "closeModal");
-        html.attr("onclick", "removeModal()")
-        
-        div.attr("id", "modal");
-        
-        modal.contents().prepend(html);
-        div.append(modal);
-        $('#mainPic').append(div);
-        return div;
-    }
-    function modalPicture(imgDir)
-    {
-        let html = $("<div></div>")
-            .attr("id","content")
-            .append($("<div></div>")
-                .attr("id","contentAndClose")
-                .append($("<img></img>")
-                .attr("src",imgDir))),
-        modal = createModal(html);
-        createModalPagination(modal);
-    }
-    
-    function removeModal()
-    {
-        $("#modal").remove();
-    }
+ocultar barra de scroll*/
+function createModal(modal)
+{
+    let div = $("<div></div>"),
+    html = $("<button>")
+            .append($("<img></img>")
+                .attr({"src":_closeIcon, "class":"bottom-img"}))
+            .append($("<img></img>")
+                .attr({"src":_closeIconHover, "class":"top-img"}));
 
-    //Modal pagination function
-    function createModalPagination(modal)
+    html.attr("class", "closeModal");
+    html.attr("onclick", "removeModal()")
+    
+    div.attr("id", "modal");
+    
+    modal.contents().prepend(html);
+    div.append(modal);
+    $('#mainPic').append(div);
+    return div;
+}
+function modalPicture(imgDir)
+{
+    let html = $("<div></div>")
+        .attr("id","content")
+        .append($("<div></div>")
+            .attr("id","contentAndClose")
+            .append($("<img></img>")
+                .attr("src",imgDir.children[0].src)))
+                .attr("class",imgDir.id),
+    modal = createModal(html);
+    createModalPagination();
+}
+
+function removeModal()
+{
+    $("#modal").remove();
+}
+
+//Modal pagination function
+function createModalPagination()
+{
+    let leftArrow = $("<i></i>"),
+    rightArrow = $("<i></i>"),
+    leftButton = $("<button></button>"),
+    rightButton = $("<button></button>");
+
+    leftArrow.attr("class", "flaticon flaticon-left-arrow");        
+    rightArrow.attr("class", "flaticon flaticon-next");
+    leftButton.attr("class", "preBtn");
+    leftButton.attr("onclick", "changeResource(this.parentElement, -1)");
+    rightButton.attr("class", "nextBtn");
+    rightButton.attr("onclick", "changeResource(this.parentElement, 1)");
+    leftButton.attr("class", "preBtn");
+    rightButton.attr("class", "nextBtn");
+
+    leftButton.append(leftArrow);
+    rightButton.append(rightArrow);
+    
+    $("#content").prepend(leftButton);
+    $("#content").append(rightButton);
+}
+
+//Modal selection function
+function changeResource(object, right)
+{
+    var idObject = getNextImageById(object, right);
+    if(idObject != null)
     {
-        let leftArrow = $("<i></i>"),
-        rightArrow = $("<i></i>"),
-        leftButton = $("<button></button>"),
-        rightButton = $("<button></button>");
-    
-        leftArrow.attr("class", "flaticon flaticon-left-arrow");
-        rightArrow.attr("class", "flaticon flaticon-next");
-        leftButton.attr("class", "preBtn");
-        rightButton.attr("class", "nextBtn");
-    
-        leftButton.append(leftArrow);
-        rightButton.append(rightArrow);
-        
-        $("#content").prepend(leftButton);
-        $("#content").append(rightButton);
+        if($('#'+idObject)[0] != null)
+        {
+            let newPicSrc = $('#'+idObject)[0].children[0].src;
+            if(newPicSrc)
+            {
+                object.children[1].children[1].src = newPicSrc;
+                object.className = idObject;
+            }
+        }
+        else
+        {
+            let newPicSrc = null;
+            if(right == _one)
+            {
+                idObject = getFirstImageById(object);
+            }
+            else
+            {
+                idObject = getLastImageById(object, $('#'+object.className).parent().children().length/_totalSizes);
+            }
+            newPicSrc = $('#'+idObject)[0].children[0].src;
+            if(newPicSrc)
+            {
+                object.children[1].children[1].src = newPicSrc;
+                object.className = idObject;
+            }
+        }
     }
+}
+
+//Get next image by id
+function getNextImageById(object, right)
+{
+    let idObjectArray = splitString(object.className, '-'),
+    idObject = "";
+    idObject = getNextIdObject(idObjectArray, right);
+    return idObject;
+}
+//Get first image by id
+function getFirstImageById(object)
+{
+    let idObjectArray = splitString(object.className, '-'),
+    idObject = "";
+    idObject = getIdObject(idObjectArray, _one);
+    return idObject;
+}
+//Get last image by id
+function getLastImageById(object, lastId)
+{
+    let idObjectArray = splitString(object.className, '-'),
+    idObject = "";
+    idObject = getIdObject(idObjectArray, lastId);
+    return idObject;
+}
+//Get the array object id
+function getIdObject(idObjectArray, cursor)
+{
+    var idObject = "";
+    for(let i = 0; i < idObjectArray.length; i++)
+    {
+        if(i == idObjectArray.length -1)
+        {
+            idObject = idObject.concat(cursor) ;
+        }
+        else
+        {
+            idObject = idObject.concat(idObjectArray[i] + '-');
+        }
+    }
+    return idObject;
+}
+//Get the next array object id
+function getNextIdObject(idObjectArray, cursor)
+{
+    var idObject = "";
+    for(let i = 0; i < idObjectArray.length; i++)
+    {
+        if(i == idObjectArray.length -1)
+        {
+            idObject = idObject.concat(parseInt(idObjectArray[i]) + cursor ) ;
+        }
+        else
+        {
+            idObject = idObject.concat(idObjectArray[i] + '-');
+        }
+    }
+    return idObject;
+}
+//Splits a string
+function splitString(string, splitChar)
+{
+    return string.split(splitChar);
+}
+
 /*============================================================================
                         Pictures functions
 ==============================================================================*/
@@ -328,6 +431,7 @@ function showGridPictures(picture, language)
 {
     var type = parseInt(picture.picSizeID),
     className = "galeryPic",
+    idName = picture.title.split('.')[0],
     languagesRedirection = "../",
     finalUrl = picture.urlPic,
     html;
@@ -355,13 +459,74 @@ function showGridPictures(picture, language)
     html.attr("src", finalUrl);
     html.attr("alt", picture.picDescription);
 
-    let article = $("<article>")
+    let article = $("<article>");
+    article.attr("class", className);
+    article.attr("id", idName);
+    if(type == _small || type == _medium)
+    {
+        let idLargNameArray = picture.title.split('.');
+        idLargNameArray = idLargNameArray[0].split('-');
+        let idLargName = idLargNameArray[0].concat('-lar-' + idLargNameArray[2]);
+        article.attr("onclick", "modalPicture(document.getElementById('" + idLargName + "'))");
+    }
     article.append(html);
     article.attr("class", className);
     return article;
 }
 
+/*============================================================================
+                        Video functions
+==============================================================================*/
 
+//Functions that ask to server to get grid pictures
+function loadVideo(section)
+{
+    var parmSectionID = '/3',
+    data
+    
+    //We get html lang attribute to send the correct language code to showSlidePictures() function
+    lang = getLangPage();
+    //Request creation
+    xmlhttpRequest = new XMLHttpRequest();
+
+    //Request execution
+    xmlhttpRequest.onreadystatechange = function () {
+        if (xmlhttpRequest.readyState === _done) {
+            if (xmlhttpRequest.status === _ok) {
+                console.log(xmlhttpRequest.status); // 'This is the output.'
+                data = JSON.parse(xmlhttpRequest.response)
+                data.FILAS.forEach(function(obj)
+                {
+                    let video = $("<video></video>"),
+                    videoExtension = getFileExtension(obj.title);
+                    video.attr({
+                                "controls"  : "",
+                                "width"     : "1280",
+                                "height"    : "720"
+                        });
+                    video.append($("<source></source>")
+                        .attr({
+                                "id"     : "video_" + obj.id,
+                                "type"   : "video/" + videoExtension
+                        }));
+                    video[0].children[0].src = obj.urlVideo;
+                    section.append(video);
+                });
+            } else {
+                console.log('Error: ' + xmlhttpRequest.status); // An error occurred during the request.
+            }
+        }
+    };
+
+    
+    xmlhttpRequest.open(_serverGetFunction, _serverRequests + _serverVideos + parmSectionID, _true);
+    xmlhttpRequest.send();
+}
+
+function getFileExtension(fileName)
+{
+    return fileName.split('.')[1];
+}
 
 function changeLink(button)
 {

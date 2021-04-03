@@ -37,6 +37,10 @@ header
     border-bottom: #666 solid 1px;
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
 }
+.oculto
+{
+	display: none;
+}
 h1
 {
     font-size: 3em;
@@ -270,7 +274,7 @@ p
     margin: 15px auto;
 }
 
-#mainCV, #mainBio, #mainPic
+#mainCV, #mainBio, #mainPic, #mainVideoBook, #mainContact
 {
     padding: 60px 0;
     margin: 0 10%;
@@ -344,12 +348,27 @@ span.spanCvRight
     bottom: 0;
     right: 0;
     background-color: rgba(0,0,0,.7);
+    z-index: 5;
+    height: 100%;
 }
 #modal > div {
     position: absolute;
-    top: 5em;
-    left: 25%;
     display: inline-flex;
+    width: 100%;
+    max-height: 80%;
+    margin-top: 2em;
+}
+
+#modal > div img {
+    max-width: 100%;
+    max-height: 90%;
+    display: block;
+    margin: auto;
+}
+
+#contentAndClose
+{
+    width: 75%;
 }
 
 /* Modal buttons */
@@ -374,15 +393,23 @@ span.spanCvRight
 .closeModal>.top-img
 {
     position: absolute;
-    transform: translate(-1em);
+    transform: translateY(-1.5em);
 }
 
 .preBtn, .nextBtn
 {
-    font-size: 2em;
+    font-size: 1em;
     margin: auto;
+    padding: 50px 0;
 }
-
+.preBtn 
+{
+    margin-right: 2%;
+}
+.nextBtn 
+{
+    margin-left: 2%;
+}
 .preBtn:hover
 {
     transform: translate(-16px);
@@ -391,6 +418,23 @@ span.spanCvRight
 .nextBtn:hover
 {
     transform: translate(16px);
+}
+
+/******************* Columns  *********************/
+.columns
+{
+    display: block;
+    width: 100%;
+}
+.column-50
+{
+    width: 80%;
+    display: block;
+    margin: auto;
+}
+.column-textAlign-center, p.column-textAlign-center
+{
+    text-align: center;
 }
 
 /*******************  Footer  *********************/
@@ -430,6 +474,12 @@ footer div
     .galeryPicSml, .sml
     {
         display: none;
+    }
+    /* Modal buttons */
+    .preBtn, .nextBtn
+    {
+        font-size: 2em;
+        padding: 100px 20px;
     }
 }
 
@@ -493,11 +543,11 @@ footer div
 
     /*********  Main section *********/
   
-    #mainCV, #mainBio, #mainPic
+    #mainCV, #mainBio, #mainPic, #mainVideoBook, #mainContact
     {
         padding: 120px 0;
     }
-    #mainCV, #mainBio
+    #mainCV, #mainBio, #mainContact
     {
         margin: 0 3%;
     }  
@@ -505,6 +555,13 @@ footer div
     {
         margin: 0 10%; 
     }  
+    #mainVideoBook > video
+    {
+        margin: auto;
+        display: block;
+        max-width: 100%;
+        max-height: 100%;
+    }
     span.spanCvLeft, span.spanCvRight
     {
         display: inline-block;
@@ -523,6 +580,11 @@ footer div
     .pictureGrid img 
     {
         width: 100%;
+    }
+    /******************* Columns  *********************/
+    .columns
+    {
+        display: inline-flex;
     }
 }
 
@@ -595,7 +657,7 @@ footer div
 @media all and (min-width: 1440px)
 {
     /*************  Main slider  **************/
-    #mainCV, #mainBio {
+    #mainCV, #mainBio, #mainContact {
         margin: 0 10%;
     }
 }

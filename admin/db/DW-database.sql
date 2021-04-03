@@ -2,7 +2,7 @@
 
 CREATE DATABASE davidVallsWeb;
 
-CREATE TABLE PicSections(
+CREATE TABLE Sections(
     id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     sectionName VARCHAR(20),
 
@@ -27,10 +27,30 @@ CREATE TABLE Pictures(
     picSizeID INT UNSIGNED,
 
     PRIMARY KEY(id),
-    FOREIGN KEY(picSectionID) REFERENCES PicSections(id) 
+    FOREIGN KEY(picSectionID) REFERENCES Sections(id) 
         ON DELETE SET NULL
         ON UPDATE CASCADE,
     FOREIGN KEY(picSizeID) REFERENCES PicSizes(id)
+        ON DELETE SET NULL
+        ON UPDATE CASCADE
+) ENGINE = innodb;
+
+CREATE TABLE Videos(
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    title VARCHAR(40),
+    urlVideo VARCHAR(100),
+    videoDescription VARCHAR(100),
+    videoDescriptionEng VARCHAR(100),
+    videoDescriptionCat VARCHAR(100),
+    videoSectionID INT UNSIGNED,
+	videoThumb INT UNSIGNED,
+	videoShow BOOLEAN ,
+
+    PRIMARY KEY(id),
+    FOREIGN KEY(videoSectionID) REFERENCES Sections(id) 
+        ON DELETE SET NULL
+        ON UPDATE CASCADE,
+    FOREIGN KEY(videoThumb) REFERENCES Pictures(id) 
         ON DELETE SET NULL
         ON UPDATE CASCADE
 ) ENGINE = innodb;
@@ -57,9 +77,11 @@ CREATE TABLE Users(
 
 /************* Setting tables values *************/
 
-INSERT INTO PicSections (sectionName) 
+INSERT INTO Sections (sectionName) 
     VALUES  ("MainSlider"),
-            ("PicturesGrid");
+            ("PicturesGrid"),
+            ("Videobook"),
+            ("Reels");
 
 INSERT INTO PicSizes (sizeName) 
     VALUES  ("Small"),
@@ -85,6 +107,9 @@ INSERT INTO Pictures (title, urlPic, picDescription, picDescriptionEng, picDescr
             ("pictureGrid-sml-3.jpg", "images/pictures/picturesGrid/small/pictureGrid-sml-3.jpg", "Foto pequeña 3 de la sección de fotos David Valls Gomez Web", "David Valls Gomez Web homepage pictures section's small picture 3 ", "Foto pequenya 3 secció de fotoscial de David Valls Gomez Web", 2, 1),
             ("pictureGrid-sml-4.jpg", "images/pictures/picturesGrid/small/pictureGrid-sml-4.jpg", "Foto pequeña 4 de la sección de fotos David Valls Gomez Web", "David Valls Gomez Web homepage pictures section's small picture 4 ", "Foto pequenya 4 secció de fotoscial de David Valls Gomez Web", 2, 1),
             ("pictureGrid-sml-5.jpg", "images/pictures/picturesGrid/small/pictureGrid-sml-5.jpg", "Foto pequeña 5 de la sección de fotos David Valls Gomez Web", "David Valls Gomez Web homepage pictures section's small picture 5 ", "Foto pequenya 5 secció de fotoscial de David Valls Gomez Web", 2, 1);
+
+INSERT INTO Videos (title, urlVideo, videoDescription, videoDescriptionEng, videoDescriptionCat, videoSectionID, videoThumb, videoShow)
+    VALUES  ("videobook-1.mp4", "videos/videobook/videobook-1.mp4", "Videobook del actor David Valls Gómez", "David Valls Gomez Videobook", "Videobook de l'actor David Valls Gomez Web", 3, NULL, TRUE);
 
 INSERT INTO UserPrivileges (privilegeName)
     VALUES  ("Super Admin"),

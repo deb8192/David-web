@@ -45,7 +45,7 @@ $TOTAL_COINCIDENCES  = -1;  // DB coincidences
 // =================================================================================
 // Default SQL for gallery pictures
 // =================================================================================
-$mysql  = 'select p.* FROM pictures ';
+$mysql  = 'select p.* FROM pictures p';
 
 // It checks if there is and resource ID
 $ID = array_shift($RESOURCE); 

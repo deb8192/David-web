@@ -12,9 +12,7 @@
             include_once("../includes/header.php");
         ?>
         <main id="mainSlider">
-            <?php
-                findPictures(Constant::ONE, Constant::ONE);
-            ?>
+            <h1 class="oculto">David Valls actor</h1>
         </main>
         <?php
             //Footer declaration
